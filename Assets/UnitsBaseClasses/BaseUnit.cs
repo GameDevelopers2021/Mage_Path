@@ -14,7 +14,7 @@ namespace UnitsBaseClasses
             Health = health;
             Mana = mana;
         }
-        
+
         public virtual void Attack()
         {
             throw new System.NotImplementedException();
