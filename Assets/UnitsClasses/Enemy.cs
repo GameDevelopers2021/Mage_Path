@@ -1,9 +1,19 @@
-﻿using UnitsBaseClasses;
+﻿using UnitsInterfaces;
+using UnityEngine;
 
 namespace UnitsClasses
 {
-    public class Enemy : BaseUnit
+    public class Enemy : IUnit
     {
-        public Enemy(int health, int mana) : base(health, mana) {}
+        public int Health { get; set; }
+        public int Mana { get; set; }
+        public Vector2 Velocity { get; set; }
+
+        public Enemy() {}
+
+        public void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

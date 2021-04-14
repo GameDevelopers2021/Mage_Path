@@ -1,19 +1,22 @@
-﻿// using UnitsBaseClasses;
-// using UnitsInterfaces;
-// using UnityEngine;
-//
-// namespace UnitsScripts
-// {
-//     public class UnitScript<TUnit> : MonoBehaviour 
-//         where TUnit : BaseUnit, new()
-//     {
-//         [SerializeField] private int health = 100;
-//         [SerializeField] private int mana = 100;
-//         private TUnit unitModel;
-//         
-//         private void Start()
-//         {
-//             unitModel = new TUnit();
-//         }
-//     }
-// }
+﻿using UnitsInterfaces;
+using UnityEngine;
+
+namespace UnitsScripts
+{
+    public class UnitScript<TUnit> : MonoBehaviour 
+        where TUnit : IUnit, new()
+    {
+        [SerializeField] protected int health = 100;
+        [SerializeField] protected int mana = 100;
+        protected TUnit UnitModel;
+        
+        private void Start()
+        {
+            UnitModel = new TUnit
+            {
+                Health = health, 
+                Mana = mana
+            };
+        }
+    }
+}
