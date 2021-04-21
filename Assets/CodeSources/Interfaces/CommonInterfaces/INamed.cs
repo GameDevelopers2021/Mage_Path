@@ -1,4 +1,4 @@
-﻿namespace CommonInterfaces
+﻿namespace CodeSources.Interfaces.CommonInterfaces
 {
     public interface INamed
     {

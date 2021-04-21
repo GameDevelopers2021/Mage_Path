@@ -1,7 +1,7 @@
-﻿using ItemsInterfaces;
+﻿using CodeSources.Interfaces.Items;
 using UnityEngine;
 
-namespace MageClasses
+namespace CodeSources.Interfaces.Mage
 {
     public interface IMagic  
     {

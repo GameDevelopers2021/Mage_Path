@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/InputSystem/PlayerControll.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/CodeSources/Controllers/PlayerController.inputactions'
 
 using System;
 using System.Collections;
@@ -6,15 +6,15 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace InputSystem
+namespace CodeSources.Controllers
 {
-    public class @PlayerControll : IInputActionCollection, IDisposable
+    public class @PlayerController : IInputActionCollection, IDisposable
     {
         public InputActionAsset asset { get; }
-        public @PlayerControll()
+        public @PlayerController()
         {
             asset = InputActionAsset.FromJson(@"{
-    ""name"": ""PlayerControll"",
+    ""name"": ""PlayerController"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -166,8 +166,8 @@ namespace InputSystem
         private readonly InputAction m_Player_MouseMoving;
         public struct PlayerActions
         {
-            private @PlayerControll m_Wrapper;
-            public PlayerActions(@PlayerControll wrapper) { m_Wrapper = wrapper; }
+            private @PlayerController m_Wrapper;
+            public PlayerActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
             public InputAction @Moving => m_Wrapper.m_Player_Moving;
             public InputAction @MouseMoving => m_Wrapper.m_Player_MouseMoving;
             public InputActionMap Get() { return m_Wrapper.m_Player; }

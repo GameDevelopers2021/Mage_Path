@@ -1,7 +1,7 @@
-﻿using UnitsInterfaces;
+﻿using CodeSources.Interfaces.Units;
 using UnityEngine;
 
-namespace UnitsClasses
+namespace CodeSources.Model.Units
 {
     public abstract class UnitBase : IUnit
     {

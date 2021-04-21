@@ -1,11 +1,8 @@
-﻿using System;
-using System.Threading;
-using MageClasses;
-using UnitsClasses;
+﻿using CodeSources.Controllers;
+using CodeSources.Model.Units;
 using UnityEngine;
-using InputSystem;
 
-namespace UnitsScripts
+namespace CodeSources.Units
 {
     public class PlayerScript : UnitScript<Player>
     {
@@ -15,15 +12,16 @@ namespace UnitsScripts
         [SerializeField] private GameObject Spell;
         private int culdownSpell;
         private float rotationSpeed = 1f;
-        private PlayerControll control;
+        private PlayerController control;
         private Vector2 lastScreenMousePosition;
         [SerializeField] private Camera mainCamera;
         
         private void Awake()
         {
             UnitModel = new Player(gameObject);
+            rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
             mainCamera = Camera.main;
-            control = new PlayerControll();
+            control = new PlayerController();
             control.Player.Moving.performed += context => UnitModel.Move(context.ReadValue<Vector2>());
             control.Player.Moving.canceled += context => UnitModel.Move(Vector2.zero);
             control.Player.MouseMoving.performed += context => lastScreenMousePosition = context.ReadValue<Vector2>();
@@ -32,7 +30,6 @@ namespace UnitsScripts
         private void Start()
         {
             culdownSpell = 0;
-            rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         }
 
         private void FixedUpdate()

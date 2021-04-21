@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using ItemsInterfaces;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
-using MageClasses;
+using CodeSources.Interfaces.Items;
+using CodeSources.Interfaces.Mage;
 using Unity.Mathematics;
+using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace MageClasses
+namespace CodeSources.Model.Mage
 {
     public class BasicSpell: MonoBehaviour, ISpell
     {

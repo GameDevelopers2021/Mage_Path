@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace MageClasses
+namespace CodeSources.Model.Mage
 {
     public class MagicUnity:MonoBehaviour
     {

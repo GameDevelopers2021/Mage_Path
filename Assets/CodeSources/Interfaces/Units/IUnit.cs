@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnitsInterfaces
+namespace CodeSources.Interfaces.Units
 {
     public interface IUnit
     {

@@ -1,7 +1,7 @@
-﻿using UnitsClasses;
+﻿using CodeSources.Model.Units;
 using UnityEngine;
 
-namespace UnitsScripts
+namespace CodeSources.Units
 {
     public class EnemyScript : UnitScript<Enemy>
     {

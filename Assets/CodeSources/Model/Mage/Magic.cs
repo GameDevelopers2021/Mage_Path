@@ -1,8 +1,9 @@
 using System;
-using ItemsInterfaces;
+using CodeSources.Interfaces.Items;
+using CodeSources.Interfaces.Mage;
 using UnityEngine;
 
-namespace MageClasses
+namespace CodeSources.Model.Mage
 {
     public class Magic : IMagic
     {

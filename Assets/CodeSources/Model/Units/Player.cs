@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnitsClasses
+namespace CodeSources.Model.Units
 {
     public class Player : UnitBase
     {

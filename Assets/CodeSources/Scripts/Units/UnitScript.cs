@@ -1,7 +1,7 @@
-﻿using UnitsInterfaces;
+﻿using CodeSources.Interfaces.Units;
 using UnityEngine;
 
-namespace UnitsScripts
+namespace CodeSources.Units
 {
     public class UnitScript<TUnit> : MonoBehaviour 
         where TUnit : IUnit
