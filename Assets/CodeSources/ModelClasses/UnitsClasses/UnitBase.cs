@@ -30,7 +30,7 @@ namespace UnitsClasses
 
         public virtual void Move(Vector2 direction)
         {
-            Rigidbody.velocity = direction * Speed;
+            Rigidbody.velocity = direction.normalized * Speed;
         }
     }
 }
