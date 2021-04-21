@@ -14,16 +14,21 @@ namespace CodeSources.Units
         private float rotationSpeed = 1f;
         private PlayerController control;
         private Vector2 lastScreenMousePosition;
+        private Vector2 playerNextDirection;
         [SerializeField] private Camera mainCamera;
-        
+        public Player UnitProp
+        {
+            get => UnitModel;
+        }
+
         private void Awake()
         {
             UnitModel = new Player(gameObject);
             rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
             mainCamera = Camera.main;
             control = new PlayerController();
-            control.Player.Moving.performed += context => UnitModel.Move(context.ReadValue<Vector2>());
-            control.Player.Moving.canceled += context => UnitModel.Move(Vector2.zero);
+            control.Player.Moving.performed += context => playerNextDirection = context.ReadValue<Vector2>();
+            control.Player.Moving.canceled += context => playerNextDirection = Vector2.zero;
             control.Player.MouseMoving.performed += context => lastScreenMousePosition = context.ReadValue<Vector2>();
         }
         
@@ -34,6 +39,7 @@ namespace CodeSources.Units
 
         private void FixedUpdate()
         {
+            UnitModel.Move(playerNextDirection);
             UnitModel.RotateByMousePosition(lastScreenMousePosition, mainCamera);
             //
             // if (Input.GetKey(KeyCode.Mouse0) && culdownSpell == 0)

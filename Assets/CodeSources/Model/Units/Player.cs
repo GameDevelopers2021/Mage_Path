@@ -4,9 +4,11 @@ namespace CodeSources.Model.Units
 {
     public class Player : UnitBase
     {
-        public Player(GameObject player, int health = 100, int mana = 100, float speed = 10) 
-            : base(player, health, mana, speed) 
-        { }
+        public Player(GameObject enemy, int health = 100, int mana = 100, float speed = 10)
+            : base(enemy, health, mana, speed)
+        {
+            enemy.tag = "Player";
+        }
         
         public void RotateByMousePosition(Vector2 screenMousePosition, Camera cameraDetectedMouse)
         {

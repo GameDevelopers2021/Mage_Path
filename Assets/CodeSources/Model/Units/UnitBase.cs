@@ -8,14 +8,24 @@ namespace CodeSources.Model.Units
         protected readonly GameObject UnitObject;
         protected readonly Rigidbody2D Rigidbody;
         protected readonly Transform Transform;
+        protected int health;
         
-        public int Health { get; set; }
+        public int Health
+        {
+            get => health;
+            set
+            {
+                health = value;
+                Debug.Log(health);
+            }
+        }
+
         public int Mana { get; set; }
         public float Speed { get; set; }
         
-        protected UnitBase(GameObject player, int health, int mana, float speed)
+        protected UnitBase(GameObject enemy, int health, int mana, float speed)
         {
-            UnitObject = player;
+            UnitObject = enemy;
             Rigidbody = UnitObject.GetComponent<Rigidbody2D>();
             Transform = UnitObject.transform;
             Health = health;
