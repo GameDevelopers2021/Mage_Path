@@ -12,7 +12,7 @@ namespace UnitsClasses
 
         public Player() { }
         
-        public Player(int health, int mana)
+        public Player(GameObject playerObject, int health, int mana)
         {
 
         }
