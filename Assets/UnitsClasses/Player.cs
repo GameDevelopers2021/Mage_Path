@@ -1,25 +1,21 @@
-﻿using System;
-using UnitsInterfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UnitsClasses
 {
-    public class Player : IUnit
+    public class Player : UnitBase
     {
-        public int Health { get; set; }
-        public int Mana { get; set; }
-        public Vector2 Velocity { get; set; }
-
-        public Player() { }
-        
-        public Player(GameObject playerObject, int health, int mana)
+        public void RotateByMousePosition(Vector2 screenMousePosition, Camera cameraDetectedMouse)
         {
-
+            var worldMousePosition = (Vector2)cameraDetectedMouse.ScreenToWorldPoint(screenMousePosition);
+            var playerPosition = Transform.position;
+            var playerViewVector = (Vector2)UnitObject.transform.right;
+            var expectedPlayerView = worldMousePosition - new Vector2(playerPosition.x, playerPosition.y);
+            var rotationAngle = Vector2.SignedAngle(playerViewVector, expectedPlayerView);
+            Transform.Rotate(Vector3.forward, rotationAngle, Space.World);
         }
 
-        public void Attack()
-        {
-            throw new NotImplementedException();
-        }
+        public Player(GameObject player, int health = 100, int mana = 100, float speed = 10) 
+            : base(player, health, mana, speed) 
+        { }
     }
 }

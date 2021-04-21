@@ -6,8 +6,9 @@ namespace UnitsInterfaces
     {
         int Health { get; set; }
         int Mana { get; set; }
-        Vector2 Velocity { get; set; }
+        float Speed { get; set; }
 
         void Attack();
+        void Move(Vector2 direction);
     }
 }

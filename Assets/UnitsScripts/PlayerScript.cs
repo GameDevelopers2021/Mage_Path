@@ -17,66 +17,28 @@ namespace UnitsScripts
         private int culdownSpell;
         private float rotationSpeed = 1f;
         private PlayerControll control;
-        private Vector2 worldMousePosition;
+        private Vector2 lastScreenMousePosition;
+        [SerializeField] private Camera mainCamera;
         
         private void Awake()
         {
+            UnitModel = new Player(gameObject, health, mana);
+            mainCamera = Camera.main;
             control = new PlayerControll();
-            control.Player.Moving.performed += context => Moving(context.ReadValue<Vector2>());
-            control.Player.Moving.canceled += context => Moving(Vector2.zero);
-            control.Player.MouseMoving.performed += context => MouseMoving(context.ReadValue<Vector2>());
+            control.Player.Moving.performed += context => UnitModel.Move(context.ReadValue<Vector2>());
+            control.Player.Moving.canceled += context => UnitModel.Move(Vector2.zero);
+            control.Player.MouseMoving.performed += context => lastScreenMousePosition = context.ReadValue<Vector2>();
         }
         
         private void Start()
         {
             culdownSpell = 0;
             rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-            UnitModel = new Player
-            {
-                Health = health,
-                Mana = mana,
-                //TODO: CurrentBook = book
-            };
-        }
-
-        public void OnEnable() => control.Enable();
-
-        public void OnDisable() => control.Disable();
-
-        private void Update()
-        {
-        }
-        
-        private void Moving(Vector2 direction)
-        {
-            rigidbody2D.velocity = 10f * direction;
-        }
-
-        private void MouseMoving(Vector2 mousePosition)
-        {
-            worldMousePosition = mousePosition;
-            var worldMouseVector3 = Camera.main.ScreenToWorldPoint(mousePosition);
-            worldMouseVector3.z = 0;
-            var mv2 = new Vector2(worldMouseVector3.x, worldMouseVector3.y);
-            //mousePosition = mv2;
-            var cv2 = mv2 - new Vector2(transform.position.x, transform.position.y);
-            var playerView = gameObject.transform.right;
-            var pv2 = new Vector2(playerView.x, playerView.y);
-            var rotationAngle = Vector2.SignedAngle(pv2, cv2);
-            gameObject.transform.Rotate(Vector3.forward, rotationAngle, Space.World);
         }
 
         private void FixedUpdate()
         {
-            MouseMoving(worldMousePosition);
-            // var worldMouseVector3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // worldMouseVector3.z = 0;
-            // var mv2 = new Vector2(worldMouseVector3.x, worldMouseVector3.y);
-            // var cv2 = mv2 - new Vector2(transform.position.x, transform.position.y);
-            // var playerView = gameObject.transform.right;
-            // var pv2 = new Vector2(playerView.x, playerView.y);
-            // var rotationAngle = Vector2.SignedAngle(pv2, cv2);
-            // gameObject.transform.Rotate(Vector3.forward, rotationAngle, Space.World);
+            UnitModel.RotateByMousePosition(lastScreenMousePosition, mainCamera);
             //
             // if (Input.GetKey(KeyCode.Mouse0) && culdownSpell == 0)
             // {
@@ -89,5 +51,9 @@ namespace UnitsScripts
             //         culdownSpell--;
             // }
         }
+        
+        public void OnEnable() => control.Enable();
+
+        public void OnDisable() => control.Disable();
     }
 }

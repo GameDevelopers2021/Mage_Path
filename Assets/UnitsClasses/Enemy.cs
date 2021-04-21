@@ -7,11 +7,14 @@ namespace UnitsClasses
     {
         public int Health { get; set; }
         public int Mana { get; set; }
-        public Vector2 Velocity { get; set; }
-
-        public Enemy() {}
+        public float Speed { get; set; }
 
         public void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Move(Vector2 direction)
         {
             throw new System.NotImplementedException();
         }
