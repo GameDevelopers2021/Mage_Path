@@ -4,6 +4,10 @@ namespace UnitsClasses
 {
     public class Player : UnitBase
     {
+        public Player(GameObject player, int health = 100, int mana = 100, float speed = 10) 
+            : base(player, health, mana, speed) 
+        { }
+        
         public void RotateByMousePosition(Vector2 screenMousePosition, Camera cameraDetectedMouse)
         {
             var worldMousePosition = (Vector2)cameraDetectedMouse.ScreenToWorldPoint(screenMousePosition);
@@ -13,9 +17,5 @@ namespace UnitsClasses
             var rotationAngle = Vector2.SignedAngle(playerViewVector, expectedPlayerView);
             Transform.Rotate(Vector3.forward, rotationAngle, Space.World);
         }
-
-        public Player(GameObject player, int health = 100, int mana = 100, float speed = 10) 
-            : base(player, health, mana, speed) 
-        { }
     }
 }

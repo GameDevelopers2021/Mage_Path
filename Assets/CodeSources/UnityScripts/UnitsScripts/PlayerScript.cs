@@ -4,7 +4,6 @@ using MageClasses;
 using UnitsClasses;
 using UnityEngine;
 using InputSystem;
-using UnityEngine.InputSystem;
 
 namespace UnitsScripts
 {
@@ -22,7 +21,7 @@ namespace UnitsScripts
         
         private void Awake()
         {
-            UnitModel = new Player(gameObject, health, mana);
+            UnitModel = new Player(gameObject);
             mainCamera = Camera.main;
             control = new PlayerControll();
             control.Player.Moving.performed += context => UnitModel.Move(context.ReadValue<Vector2>());
