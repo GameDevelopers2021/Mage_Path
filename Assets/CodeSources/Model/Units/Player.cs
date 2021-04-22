@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using CodeSources.Scripts.Units;
+using UnityEngine;
 
 namespace CodeSources.Model.Units
 {
     public class Player : UnitBase
     {
-        public Player(GameObject enemy, int health = 100, int mana = 100, float speed = 10)
-            : base(enemy, health, mana, speed)
+        public Player(MonoBehaviour unitScript, int health = 100, int mana = 100, float speed = 10)
+            : base(unitScript, health, mana, speed, "Player")
         {
-            enemy.tag = "Player";
         }
         
         public void RotateByMousePosition(Vector2 screenMousePosition, Camera cameraDetectedMouse)

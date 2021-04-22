@@ -1,4 +1,5 @@
-﻿using Unity.Mathematics;
+﻿using CodeSources.Scripts.Units;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace CodeSources.Model.Units
@@ -8,11 +9,10 @@ namespace CodeSources.Model.Units
         private float leftBorder = -5f;
         private float rigthBorder = 5f;
 
-        public Enemy(GameObject enemy, int health = 20, int mana = 0, float speed = 2f)
-            : base(enemy, health, mana, speed)
+        public Enemy(MonoBehaviour unitScript, int health = 100, int mana = 100, float speed = 5)
+            : base(unitScript, health, mana, speed, "Enemy")
         {
             Rigidbody.velocity = Vector2.right * speed;
-            enemy.tag = "Enemy";
         }
 
         public void Move()
@@ -22,5 +22,7 @@ namespace CodeSources.Model.Units
                 Rigidbody.velocity = -Rigidbody.velocity;
             }
         }
+        
+        
     }
 }

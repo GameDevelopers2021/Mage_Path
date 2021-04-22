@@ -1,12 +1,11 @@
-﻿using CodeSources.Interfaces.Units;
-using CodeSources.Model.Units;
+﻿using CodeSources.Model.Units;
 using UnityEngine;
 
-namespace CodeSources.Units
+namespace CodeSources.Scripts.Units
 {
     public class UnitScript<TUnit> : MonoBehaviour 
         where TUnit : UnitBase
     {
-        protected TUnit UnitModel { get; set; }
+        public TUnit UnitModel { get; set; }
     }
 }

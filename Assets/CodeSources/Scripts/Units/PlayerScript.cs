@@ -1,8 +1,9 @@
-﻿using CodeSources.Controllers;
+﻿using System;
+using CodeSources.Controllers;
 using CodeSources.Model.Units;
 using UnityEngine;
 
-namespace CodeSources.Units
+namespace CodeSources.Scripts.Units
 {
     public class PlayerScript : UnitScript<Player>
     {
@@ -16,14 +17,11 @@ namespace CodeSources.Units
         private Vector2 lastScreenMousePosition;
         private Vector2 playerNextDirection;
         [SerializeField] private Camera mainCamera;
-        public Player UnitProp
-        {
-            get => UnitModel;
-        }
+        
 
         private void Awake()
         {
-            UnitModel = new Player(gameObject);
+            UnitModel = new Player(this, 1000);
             rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
             mainCamera = Camera.main;
             control = new PlayerController();
@@ -53,7 +51,12 @@ namespace CodeSources.Units
             //         culdownSpell--;
             // }
         }
-        
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            
+        }
+
         public void OnEnable() => control.Enable();
 
         public void OnDisable() => control.Disable();

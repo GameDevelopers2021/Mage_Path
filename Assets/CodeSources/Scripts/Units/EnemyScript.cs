@@ -2,13 +2,13 @@
 using CodeSources.Model.Units;
 using UnityEngine;
 
-namespace CodeSources.Units
+namespace CodeSources.Scripts.Units
 {
     public class EnemyScript : UnitScript<Enemy>
     {
         private void Awake()
         {
-            UnitModel = new Enemy(gameObject);
+            UnitModel = new Enemy(this);
         }
 
         private void FixedUpdate()
@@ -16,11 +16,13 @@ namespace CodeSources.Units
             UnitModel.Move();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.collider.gameObject.CompareTag("Player"))
             {
-                other.gameObject.GetComponent<PlayerScript>().UnitProp.Health -= 10;
+                var otherModel = other.collider.gameObject.GetComponent<PlayerScript>().UnitModel;
+                otherModel.Health -= 10;
+                UnitModel.Push(otherModel);
             }
         }
     }
