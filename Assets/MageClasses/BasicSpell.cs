@@ -12,15 +12,15 @@ namespace MageClasses
     public class BasicSpell: MonoBehaviour, ISpell
     {
         public float speed = 0.1f; 
-        [FormerlySerializedAs("BasicMagic")] public GameObject basicMagic;
 
         public string Name { get; }
 
         public IEffect[] Effects { get; }
+        public float Cooldown { get; }
 
-        public List<IMagic> Cast(Transform playersTransform)
+        public List<IMagic> Cast(Transform playersTransform, GameObject magicPartical)
         {
-            var newMagic = Instantiate(basicMagic);
+            var newMagic = Instantiate(magicPartical);
             newMagic.transform.rotation = playersTransform.rotation;
             newMagic.transform.position = playersTransform.position;
             var magicScript = new Magic(
@@ -41,6 +41,7 @@ namespace MageClasses
         {
             Effects = effects;
             Name = name;
+            Cooldown = 1.5f;
         }
     }
 }

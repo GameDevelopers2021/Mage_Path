@@ -8,7 +8,8 @@ namespace MageClasses
     public interface ISpell : INamed
     {
         IEffect[] Effects { get; }
-
-        List<IMagic> Cast(Transform playersTransform);
+        float Cooldown { get; }
+        
+        List<IMagic> Cast(Transform playersTransform, GameObject magicPartical);
     }
 }

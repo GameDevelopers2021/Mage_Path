@@ -10,7 +10,7 @@ namespace UnitsScripts
 {
     public class PlayerScript : UnitScript<Player>
     {
-        //TODO: private Book currentBook = new Book(); 
+        private Book currentBook; 
 
         private Rigidbody2D rigidbody2D;
         [SerializeField] private GameObject Spell;
@@ -21,10 +21,14 @@ namespace UnitsScripts
         
         private void Awake()
         {
+            currentBook = gameObject.GetComponent<Book>();
+            currentBook.SetSize(1);
+            currentBook.WriteSpell(Spell.GetComponent<BasicSpell>(), 0);
             control = new PlayerControll();
             control.Player.Moving.performed += context => Moving(context.ReadValue<Vector2>());
             control.Player.Moving.canceled += context => Moving(Vector2.zero);
             control.Player.MouseMoving.performed += context => MouseMoving(context.ReadValue<Vector2>());
+            control.Player.CastSpell.performed += context => Cast();
         }
         
         private void Start()
@@ -64,6 +68,11 @@ namespace UnitsScripts
             var pv2 = new Vector2(playerView.x, playerView.y);
             var rotationAngle = Vector2.SignedAngle(pv2, cv2);
             gameObject.transform.Rotate(Vector3.forward, rotationAngle, Space.World);
+        }
+
+        private void Cast()
+        {
+            currentBook.Cast();
         }
 
         private void FixedUpdate()
