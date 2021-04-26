@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace UnitsScripts
 {
-    public class UnitScript<TUnit> : MonoBehaviour 
-        where TUnit : IUnit
+    public class UnitScript<TUnit> : MonoBehaviour
     {
         [SerializeField] protected int health = 100;
         [SerializeField] protected int mana = 100;

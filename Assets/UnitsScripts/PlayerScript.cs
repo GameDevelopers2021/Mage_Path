@@ -25,9 +25,9 @@ namespace UnitsScripts
             UnitModel = new Player(gameObject, health, mana);
             mainCamera = Camera.main;
             control = new PlayerControll();
-            control.Player.Moving.performed += context => UnitModel.Move(context.ReadValue<Vector2>());
-            control.Player.Moving.canceled += context => UnitModel.Move(Vector2.zero);
-            control.Player.MouseMoving.performed += context => lastScreenMousePosition = context.ReadValue<Vector2>();
+            // control.Player.Moving.performed += context => UnitModel.Move(context.ReadValue<Vector2>());
+            // control.Player.Moving.canceled += context => UnitModel.Move(Vector2.zero);
+            // control.Player.MouseMoving.performed += context => lastScreenMousePosition = context.ReadValue<Vector2>();
         }
         
         private void Start()
