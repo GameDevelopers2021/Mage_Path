@@ -38,7 +38,7 @@ namespace UnitsScripts
 
         private void FixedUpdate()
         {
-            UnitModel.RotateByMousePosition(lastScreenMousePosition, mainCamera);
+            //UnitModel.RotateByMousePosition(lastScreenMousePosition, mainCamera);
             //
             // if (Input.GetKey(KeyCode.Mouse0) && culdownSpell == 0)
             // {

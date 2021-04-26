@@ -1,16 +1,19 @@
-﻿using InputSystem;
+﻿using System;
+using InputSystem;
+using UnitsInterfaces;
 using UnityEngine;
 
 namespace UnitsClasses
 {
     public class PlayerMoving : UnitComponent
     {
-        public float Speed { get; } = 5f;
+        public float Speed { get; } = 8f;
         private Camera cameraForMouseDetecting;
         private PlayerControll controller;
         private Vector2 lastPositionOfMouse;
-        private Vector2 velocity;
-        
+        private Vector2 lastMovingDirection;
+        private bool isMoving;
+
         private new void Awake()
         {
             base.Awake();
@@ -29,8 +32,10 @@ namespace UnitsClasses
         private void FixedUpdate()
         { 
            RotateByMousePosition(lastPositionOfMouse);
+           Move(lastMovingDirection); //Без этого столкновение неправильно меняет скорость игрока
            Rigidbody.angularVelocity = 0f;
-           Rigidbody.velocity = velocity;
+           if (Rigidbody.velocity != Vector2.zero && !isMoving)
+               Rigidbody.drag = 5f;
         }
 
         private void RotateByMousePosition(Vector2 screenMousePosition)
@@ -46,7 +51,17 @@ namespace UnitsClasses
         
         private void Move(Vector2 direction)
         {
-            velocity = direction.normalized * Speed;
+            lastMovingDirection = direction;
+            if (direction == Vector2.zero)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                isMoving = true;
+            }
+            Rigidbody.drag = 0f;
+            Rigidbody.velocity = direction.normalized * Speed;
         }
     }
 }
