@@ -1,17 +1,14 @@
 ﻿using System;
 using InputSystem;
-using UnitsInterfaces;
 using UnityEngine;
 
 namespace UnitsClasses
 {
-    public class PlayerMoving : UnitComponent
+    public class PlayerMoving : UnitMoving
     {
-        public float Speed { get; } = 8f;
         private Camera cameraForMouseDetecting;
         private PlayerControll controller;
         private Vector2 lastPositionOfMouse;
-        private Vector2 lastMovingDirection;
         private bool isMoving;
 
         private new void Awake()
@@ -29,13 +26,18 @@ namespace UnitsClasses
 
         private void OnDisable() => controller.Disable();
 
-        private void FixedUpdate()
-        { 
-           RotateByMousePosition(lastPositionOfMouse);
-           Move(lastMovingDirection); //Без этого столкновение неправильно меняет скорость игрока
-           Rigidbody.angularVelocity = 0f;
-           if (Rigidbody.velocity != Vector2.zero && !isMoving)
-               Rigidbody.drag = 5f;
+        private new void OnCollisionExit2D(Collision2D other)
+        { }
+
+        private new void FixedUpdate()
+        {
+            base.FixedUpdate();
+            RotateByMousePosition(lastPositionOfMouse);
+            Move(MovingDirection); //Без этого столкновение неправильно меняет скорость игрока
+            if (Rigidbody.velocity != Vector2.zero && !isMoving)
+            {
+                Rigidbody.drag = 5f;
+            }
         }
 
         private void RotateByMousePosition(Vector2 screenMousePosition)
@@ -49,19 +51,11 @@ namespace UnitsClasses
             Transform.Rotate(Vector3.forward, rotationAngle, Space.World);
         }
         
-        private void Move(Vector2 direction)
+        private new void Move(Vector2 direction)
         {
-            lastMovingDirection = direction;
-            if (direction == Vector2.zero)
-            {
-                isMoving = false;
-            }
-            else
-            {
-                isMoving = true;
-            }
-            Rigidbody.drag = 0f;
-            Rigidbody.velocity = direction.normalized * Speed;
+            MovingDirection = direction;
+            isMoving = direction != Vector2.zero;
+            base.Move(MovingDirection);
         }
     }
 }

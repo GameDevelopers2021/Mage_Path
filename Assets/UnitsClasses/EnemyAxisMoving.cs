@@ -2,19 +2,14 @@
 
 namespace UnitsClasses
 {
-    public class EnemyMoving : UnitMoving
+    public class EnemyAxisMoving : UnitMoving
     {
-        private const float LeftBorder = -10f;
-        private const float RightBorder = 10f;
+        [SerializeField] private float leftBorder = -10f;
+        [SerializeField] private float rightBorder = 10f;
 
         private void Start()
         {
             MovingDirection = Vector2.right;
-        }
-
-        private void OnCollisionExit2D(Collision2D other)
-        {
-            Rigidbody.drag = 5f;
         }
 
         private new void FixedUpdate()
@@ -26,7 +21,7 @@ namespace UnitsClasses
         private void Move()
         {
             var position = Transform.position;
-            if (position.x < LeftBorder || position.x > RightBorder)
+            if (position.x < leftBorder || position.x > rightBorder)
             {
                 MovingDirection = -MovingDirection;
             }
