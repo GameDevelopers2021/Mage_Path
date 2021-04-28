@@ -1149,7 +1149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 700
-  basicMagic: {fileID: 577376044}
 --- !u!4 &1343000470
 Transform:
   m_ObjectHideFlags: 0
