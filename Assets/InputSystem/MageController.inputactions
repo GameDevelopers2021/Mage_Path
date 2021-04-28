@@ -1,0 +1,33 @@
+{
+    "name": "MageController",
+    "maps": [
+        {
+            "name": "MageActions",
+            "id": "bc27bbcf-734c-4d21-abcd-3d8c41c147f8",
+            "actions": [
+                {
+                    "name": "CastSpell",
+                    "type": "Button",
+                    "id": "0a99f2b0-ba32-43f7-9a95-f3a83ab88360",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "eb6dd21e-31d5-46e6-8a90-3c4df8865789",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CastSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

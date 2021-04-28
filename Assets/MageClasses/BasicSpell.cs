@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using ItemsInterfaces;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using MageClasses;
 using Unity.Mathematics;
-using UnityEngine.Serialization;
 
 namespace MageClasses
 {

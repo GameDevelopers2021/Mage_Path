@@ -35,14 +35,6 @@ namespace InputSystem
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""CastSpell"",
-                    ""type"": ""Button"",
-                    ""id"": ""e4901c32-2c00-4d3c-9dde-4a2943b0c9b3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -111,17 +103,6 @@ namespace InputSystem
                     ""action"": ""MouseMoving"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f4ea394a-f95d-446a-95a1-65d471f038c5"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CastSpell"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -132,7 +113,6 @@ namespace InputSystem
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Moving = m_Player.FindAction("Moving", throwIfNotFound: true);
             m_Player_MouseMoving = m_Player.FindAction("MouseMoving", throwIfNotFound: true);
-            m_Player_CastSpell = m_Player.FindAction("CastSpell", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -184,14 +164,12 @@ namespace InputSystem
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Moving;
         private readonly InputAction m_Player_MouseMoving;
-        private readonly InputAction m_Player_CastSpell;
         public struct PlayerActions
         {
             private @PlayerControll m_Wrapper;
             public PlayerActions(@PlayerControll wrapper) { m_Wrapper = wrapper; }
             public InputAction @Moving => m_Wrapper.m_Player_Moving;
             public InputAction @MouseMoving => m_Wrapper.m_Player_MouseMoving;
-            public InputAction @CastSpell => m_Wrapper.m_Player_CastSpell;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -207,9 +185,6 @@ namespace InputSystem
                     @MouseMoving.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseMoving;
                     @MouseMoving.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseMoving;
                     @MouseMoving.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseMoving;
-                    @CastSpell.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastSpell;
-                    @CastSpell.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastSpell;
-                    @CastSpell.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCastSpell;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -220,9 +195,6 @@ namespace InputSystem
                     @MouseMoving.started += instance.OnMouseMoving;
                     @MouseMoving.performed += instance.OnMouseMoving;
                     @MouseMoving.canceled += instance.OnMouseMoving;
-                    @CastSpell.started += instance.OnCastSpell;
-                    @CastSpell.performed += instance.OnCastSpell;
-                    @CastSpell.canceled += instance.OnCastSpell;
                 }
             }
         }
@@ -231,7 +203,6 @@ namespace InputSystem
         {
             void OnMoving(InputAction.CallbackContext context);
             void OnMouseMoving(InputAction.CallbackContext context);
-            void OnCastSpell(InputAction.CallbackContext context);
         }
     }
 }
