@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using UnitsInterfaces;
+using UnityEngine;
 
 namespace UnitsClasses
 {
-    public abstract class UnitMoving : UnitComponent
+    public abstract class UnitMoving : UnitComponent, IMovingComponent
     {
         public float Speed => speed;
         protected Vector2 MovingDirection = Vector2.zero;
