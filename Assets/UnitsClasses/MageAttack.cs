@@ -1,5 +1,4 @@
-﻿using System;
-using InputSystem;
+﻿using InputSystem;
 using MageClasses;
 using UnityEngine;
 
@@ -20,7 +19,7 @@ namespace UnitsClasses
             controller = new MageController();
             controller.MageActions.CastSpell.performed += context =>
             {
-                Debug.Log("Push");
+                //Debug.Log("Push");
                 currentBook.Cast();
             };
         }

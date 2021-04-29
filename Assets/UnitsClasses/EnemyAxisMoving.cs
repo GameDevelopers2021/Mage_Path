@@ -20,7 +20,7 @@ namespace UnitsClasses
 
         private void Move()
         {
-            var position = Transform.position;
+            var position = transform.position;
             if (position.x < leftBorder || position.x > rightBorder)
             {
                 MovingDirection = -MovingDirection;

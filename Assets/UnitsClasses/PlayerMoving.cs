@@ -43,11 +43,11 @@ namespace UnitsClasses
         {
             lastPositionOfMouse = screenMousePosition;
             var worldMousePosition = (Vector2)cameraForMouseDetecting.ScreenToWorldPoint(screenMousePosition);
-            var playerPosition = Transform.position;
-            var playerViewVector = (Vector2)Transform.right;
+            var playerPosition = transform.position;
+            var playerViewVector = (Vector2)transform.right;
             var expectedPlayerView = worldMousePosition - new Vector2(playerPosition.x, playerPosition.y);
             var rotationAngle = Vector2.SignedAngle(playerViewVector, expectedPlayerView);
-            Transform.Rotate(Vector3.forward, rotationAngle, Space.World);
+            transform.Rotate(Vector3.forward, rotationAngle, Space.World);
         }
         
         private new void Move(Vector2 direction)

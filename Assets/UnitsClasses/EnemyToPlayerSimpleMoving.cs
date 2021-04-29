@@ -22,7 +22,7 @@ namespace UnitsClasses
         {
             try
             {
-                MovingDirection = player.transform.position - Transform.position;
+                MovingDirection = player.transform.position - transform.position;
                 base.Move(MovingDirection);
             }
             catch (MissingReferenceException)
