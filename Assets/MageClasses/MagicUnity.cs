@@ -29,7 +29,6 @@ namespace MageClasses
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("entry collision");
             var gameObjectTag = other.gameObject.tag;
             if (gameObjectTag == "Immortal")
             {
@@ -37,8 +36,7 @@ namespace MageClasses
             }else if (gameObjectTag == "Magic") { } // Magic-Magic collision TODO
             else
             {
-                Debug.Log("entry unit collision");
-                if (!(gameObjectTag == "Player" && magic.IsSelfFire))
+                if (!(gameObjectTag == "Player" && !magic.IsSelfFire))
                 {   
                     magic.ApplyEffects(other.gameObject);
                 }
