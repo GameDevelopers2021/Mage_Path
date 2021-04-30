@@ -10,7 +10,9 @@ namespace MageClasses
         private int _usedTime;
         public Action<Rigidbody2D, int>[] Control { get; }
         public int[] ControlTime { get; }
-        public IEffect[] Effect { get; }
+        public IEffect[] Effects { get; }
+        public bool IsSelfFire { get; }
+        public bool IsTunel { get; }
         public int Time { get; set; }
 
         public bool MagicUpdate(Rigidbody2D rigidbody)
@@ -33,13 +35,25 @@ namespace MageClasses
             return true;
         }
 
+        public void ApplyEffects(GameObject unit)
+        {
+            foreach (var effect in Effects)
+            {
+                effect.ApplyEffect(unit);
+            }
+        }
+
         public Magic(
-            Action<Rigidbody2D, int>[] control, int[] controlTime, 
-            IEffect[] effect)
+            Action<Rigidbody2D, int>[] control, 
+            int[] controlTime,
+            bool isSelfFire, bool isTunel,
+            IEffect[] effects)
         {
             Control = control;
             ControlTime = controlTime;
-            Effect = effect;
+            Effects = effects;
+            IsSelfFire = isSelfFire;
+            IsTunel = isTunel;
             Time = 0;
             _controlInd = 0;
             _usedTime = 0;

@@ -9,11 +9,12 @@ namespace MageClasses
     public class BasicSpell: MonoBehaviour, ISpell
     {
         public float speed = 0.1f; 
+        public float cooldown = 1.5f;
 
         public string Name { get; }
 
         public IEffect[] Effects { get; }
-        public float Cooldown { get; }
+        public float Cooldown => cooldown;
 
         public List<IMagic> Cast(Transform playersTransform, GameObject magicPartical)
         {
@@ -21,8 +22,12 @@ namespace MageClasses
             newMagic.transform.rotation = playersTransform.rotation;
             newMagic.transform.position = playersTransform.position;
             var magicScript = new Magic(
-                new[] {(Action<Rigidbody2D, int>) MoveForward}, new[] {700},
-                Effects);
+                new[] {(Action<Rigidbody2D, int>) MoveForward},
+                new[] {700},
+                false,
+                true,
+                new []{ new SilmpleDamage("damage",50, MagicElement.Force)}
+                );
             var magicControler = newMagic.GetComponent<MagicUnity>();
             magicControler.magic = magicScript;
             return new List<IMagic> {magicScript};
@@ -38,7 +43,7 @@ namespace MageClasses
         {
             Effects = effects;
             Name = name;
-            Cooldown = 1.5f;
+            cooldown = 1.5f;
         }
     }
 }

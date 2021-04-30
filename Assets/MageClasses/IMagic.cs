@@ -5,8 +5,9 @@ namespace MageClasses
 {
     public interface IMagic  
     {
-        IEffect[] Effect { get; }
-        int Time { get; } //in Effect class
+        IEffect[] Effects { get; }
+        bool IsSelfFire { get; }
+        bool IsTunel { get; }
         bool MagicUpdate(Rigidbody2D rigidbody);
     }
 }

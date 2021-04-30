@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using MageClasses;
 using UnityEngine;
 
 namespace UnitsClasses
@@ -18,6 +19,11 @@ namespace UnitsClasses
                     Destroy(gameObject);
                 }
             }
+        }
+
+        public void TakeDamage(int Damage, MagicElement element)
+        {
+            Health -= Damage;
         }
     }
 }
