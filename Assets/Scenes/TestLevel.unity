@@ -20480,7 +20480,7 @@ GameObject:
   - component: {fileID: 577376046}
   - component: {fileID: 577376045}
   - component: {fileID: 577376049}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Basic Magic Partical
   m_TagString: Magic
   m_Icon: {fileID: 0}
