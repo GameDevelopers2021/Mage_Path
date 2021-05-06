@@ -1,4 +1,5 @@
-﻿using UnitsInterfaces;
+﻿using System;
+using UnitsInterfaces;
 using UnityEngine;
 
 namespace UnitsClasses
@@ -14,7 +15,12 @@ namespace UnitsClasses
             Rigidbody.drag = 0f;
             Rigidbody.velocity = direction.normalized * Speed;
         }
-        
+
+        protected void OnDisable()
+        {
+            Rigidbody.velocity = Vector2.zero;
+        }
+
         protected void OnCollisionExit2D(Collision2D other)
         {
             Rigidbody.drag = 5f;

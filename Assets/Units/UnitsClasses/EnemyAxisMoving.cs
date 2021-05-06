@@ -6,10 +6,11 @@ namespace UnitsClasses
     {
         [SerializeField] private float leftBorder = -10f;
         [SerializeField] private float rightBorder = 10f;
+        [SerializeField] private Vector2 movingDirection = Vector2.right;
 
         private void Start()
         {
-            MovingDirection = Vector2.right;
+            MovingDirection = movingDirection;
         }
 
         private new void FixedUpdate()
@@ -21,7 +22,10 @@ namespace UnitsClasses
         private void Move()
         {
             var position = transform.position;
-            if (position.x < leftBorder || position.x > rightBorder)
+            if (position.x < leftBorder 
+                || position.x > rightBorder 
+                || position.y < leftBorder 
+                || position.y > rightBorder)
             {
                 MovingDirection = -MovingDirection;
             }

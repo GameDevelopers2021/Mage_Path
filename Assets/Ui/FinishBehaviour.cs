@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 
 public class FinishBehaviour : MonoBehaviour
@@ -12,6 +13,8 @@ public class FinishBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.gameObject.CompareTag("Player"))
+            return;
         Time.timeScale = 0;
         //gameObject.SendMessage("Pause");
         finishMenu.SetActive(true);

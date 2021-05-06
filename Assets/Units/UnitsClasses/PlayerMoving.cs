@@ -23,7 +23,7 @@ namespace UnitsClasses
 
         private void OnEnable() => controller.Enable();
 
-        private void OnDisable() => controller.Disable();
+        private new void OnDisable() => controller.Disable();
 
         private new void OnCollisionExit2D(Collision2D other)
         { }
