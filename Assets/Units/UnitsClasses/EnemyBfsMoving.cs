@@ -19,18 +19,18 @@ namespace Units.UnitsClasses
         {
             base.Awake();
             controller = new PlayerControll();
+            pathFinder = new TilemapPathFinder(wallTilemap);
         }
         
         private void Start()
         {
             player = GameObject.FindWithTag("Player");
-            pathFinder = new TilemapPathFinder(wallTilemap);
-            controller.Player.MouseMoving.performed += context =>
-            {
-                var t = context.ReadValue<Vector2>();
-                Debug.Log(t);
-                Debug.Log(pathFinder.tilemap.GetTile(new Vector3Int((int) t.x, (int) t.y, 0)));
-            };
+            // controller.Player.MouseMoving.performed += context =>
+            // {
+            //     var t = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            //     Debug.Log($"{t} {wallTilemap.WorldToCell(t)}");
+            //     Debug.Log(pathFinder.tilemap.GetTile(wallTilemap.WorldToCell(t)));
+            // };
         }
 
         private void OnEnable()
@@ -53,13 +53,14 @@ namespace Units.UnitsClasses
         private void Move()
         {
             if (requiredVelocity != Vector2.positiveInfinity 
-                && Rigidbody.velocity == requiredVelocity)
+                && (Rigidbody.velocity - requiredVelocity).magnitude < 1e-2)
             {
-                if ((Vector2) transform.position != nextPosition)
+                if (!(((Vector2)transform.position - nextPosition).magnitude < 1e-2))
                 {
                     return;
                 }
             }
+            
             var path = pathFinder.FindPathOnTilemap(transform.position, player.transform.position);
             if (path.Count == 0)
                 return;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,7 +12,7 @@ namespace Units.UnitsClasses
         private readonly Dictionary<Vector2Int, Directions2D> vectorsMatches;
         public Tilemap tilemap;
         private TileBase[] tiles;
-        private Dictionary<Vector2Int, int> tiles2d;
+        private Dictionary<Vector2Int, TileBase> tiles2d;
         private BoundsInt bounds;
         private Func<Vector2Int, bool> IsReachableCell;
 
@@ -37,22 +36,22 @@ namespace Units.UnitsClasses
             };
             bounds = tilemap.cellBounds;
             tiles = tilemap.GetTilesBlock(bounds);
-            tiles2d = new Dictionary<Vector2Int, int>();
+            tiles2d = new Dictionary<Vector2Int, TileBase>();
             var k = 0;
-            for (var i = bounds.yMin; i <= bounds.yMax; i++)
-            for (var j = bounds.xMin; j <= bounds.xMax; j++)
+            for (var i = bounds.yMin; i < bounds.yMax; i++)
+            for (var j = bounds.xMin; j < bounds.xMax; j++)
             {
-                tiles2d[new Vector2Int(j, i)] = k;
+                tiles2d[new Vector2Int(j, i)] = tiles[k];
                 k++;
             }
         }
 
         public List<Vector2> FindPathOnTilemap(Vector2 startInWorld, Vector2 finishInWorld)
         {
-            var startCell = new Vector2Int((int) math.round(startInWorld.x), (int) math.round(startInWorld.y));
-            var finishCell = new Vector2Int((int) math.round(finishInWorld.x), (int) math.round(finishInWorld.y));
+            var startCell = (Vector2Int)tilemap.WorldToCell(startInWorld);
+            var finishCell = (Vector2Int)tilemap.WorldToCell(finishInWorld);
+            
             return FindDirectionsPathOnTilemap(startCell, finishCell);
-            //return new List<Vector2>();
         }
 
         private List<Vector2> FindDirectionsPathOnTilemap(Vector2Int start, Vector2Int finish)
@@ -86,8 +85,6 @@ namespace Units.UnitsClasses
                         }
                     }
 
-                    if (cell == finish)
-                        break;
                     if (used.Contains(adjacentCell))
                         continue;
                     queue.Enqueue(adjacentCell);
@@ -125,24 +122,15 @@ namespace Units.UnitsClasses
             {
                 return false;
             }
-            // if (t < 0 || t > tiles.Length)
-            // {
-            //     Debug.Log(tilePosition);
-            //     t = ConvertToTileIndex(tilePosition);
-            //     Debug.Log(t);
-            // }
-            var t = tilemap.GetTile((Vector3Int) tilePosition);
-            return !(t != null);
-        }
 
-        private int ConvertToTileIndex(Vector2Int tilePosition)
-        {
-            // var anchorZero = new Vector2Int(bounds.xMax - bounds.size.x - 1, bounds.yMin + bounds.size.y);
-            // var vectorToTilePosition = tilePosition - anchorZero;
-            // vectorToTilePosition.y = -vectorToTilePosition.y;
-            //
-            // return vectorToTilePosition.x + vectorToTilePosition.y * bounds.size.x;
-            return tiles2d[tilePosition];
+            var searching = tiles2d.TryGetValue(tilePosition, out var tile);
+
+            if (searching)
+            {
+                return tile == null;
+            }
+
+            return false;
         }
     }
 
