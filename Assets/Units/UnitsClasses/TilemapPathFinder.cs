@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,8 +11,9 @@ namespace Units.UnitsClasses
     {
         private readonly Dictionary<Directions2D, Vector2Int> directionsMatches;
         private readonly Dictionary<Vector2Int, Directions2D> vectorsMatches;
-        private Tilemap tilemap;
+        public Tilemap tilemap;
         private TileBase[] tiles;
+        private Dictionary<Vector2Int, int> tiles2d;
         private BoundsInt bounds;
         private Func<Vector2Int, bool> IsReachableCell;
 
@@ -35,27 +37,32 @@ namespace Units.UnitsClasses
             };
             bounds = tilemap.cellBounds;
             tiles = tilemap.GetTilesBlock(bounds);
+            tiles2d = new Dictionary<Vector2Int, int>();
+            var k = 0;
+            for (var i = bounds.yMin; i <= bounds.yMax; i++)
+            for (var j = bounds.xMin; j <= bounds.xMax; j++)
+            {
+                tiles2d[new Vector2Int(j, i)] = k;
+                k++;
+            }
         }
 
         public List<Vector2> FindPathOnTilemap(Vector2 startInWorld, Vector2 finishInWorld)
         {
-            var startCell = (Vector2Int)tilemap.WorldToCell(startInWorld);
-            var finishCell = (Vector2Int)tilemap.WorldToCell(finishInWorld);
-            return ConvertDirectionsToVector2(FindDirectionsPathOnTilemap(startCell, finishCell));
+            var startCell = new Vector2Int((int) math.round(startInWorld.x), (int) math.round(startInWorld.y));
+            var finishCell = new Vector2Int((int) math.round(finishInWorld.x), (int) math.round(finishInWorld.y));
+            return FindDirectionsPathOnTilemap(startCell, finishCell);
+            //return new List<Vector2>();
         }
 
-        private List<Vector2> ConvertDirectionsToVector2(List<Directions2D> directions)
-        {
-            return directions.Select(direction => (Vector2)directionsMatches[direction]).ToList();
-        }
-
-        private List<Directions2D> FindDirectionsPathOnTilemap(Vector2Int start, Vector2Int finish)
+        private List<Vector2> FindDirectionsPathOnTilemap(Vector2Int start, Vector2Int finish)
         {
             var used = new HashSet<Vector2Int>();
             var queue = new Queue<Vector2Int>();
             var searchingData = new Dictionary<Vector2Int, SearchingInfo>();
 
             queue.Enqueue(start);
+            searchingData[start] = new SearchingInfo(start, 0);
             while (queue.Count != 0)
             {
                 var cell = queue.Dequeue();
@@ -78,6 +85,9 @@ namespace Units.UnitsClasses
                             adjacentCellInfo.PreviousCellPosition = cell;
                         }
                     }
+
+                    if (cell == finish)
+                        break;
                     if (used.Contains(adjacentCell))
                         continue;
                     queue.Enqueue(adjacentCell);
@@ -85,33 +95,54 @@ namespace Units.UnitsClasses
                 }
             }
 
-            return ConvertDictionaryOfSearchingInfoToDirections(searchingData, start, finish);
+            return GetPathFromSearchingInfo(searchingData, start, finish);
         }
 
-        private List<Directions2D> ConvertDictionaryOfSearchingInfoToDirections(
-            Dictionary<Vector2Int, SearchingInfo> searchingData, Vector2Int start, Vector2Int finish)
+        private List<Vector2> GetPathFromSearchingInfo(
+            Dictionary<Vector2Int, SearchingInfo> searchingData, 
+            Vector2Int start, 
+            Vector2Int finish)
         {
-            var result = new List<Directions2D>();
+            var result = new List<Vector2>();
             
             var currentCell = finish;
             while (currentCell != start)
             {
-                var previousForCurrentCell = searchingData[currentCell].PreviousCellPosition;
-                result.Add(vectorsMatches[currentCell - previousForCurrentCell]);
-                currentCell = previousForCurrentCell;
+                result.Add(tilemap.GetCellCenterWorld((Vector3Int)currentCell));
+                currentCell = searchingData[currentCell].PreviousCellPosition;
             }
 
+            result.Reverse();
             return result;
         }
 
         private bool IsEmptyTile(Vector2Int tilePosition)
         {
-            return tiles[ConvertToTileIndex(tilePosition)] == null;
+            if (tilePosition.x < bounds.xMin
+                || tilePosition.x > bounds.xMax
+                || tilePosition.y < bounds.yMin
+                || tilePosition.y > bounds.yMax)
+            {
+                return false;
+            }
+            // if (t < 0 || t > tiles.Length)
+            // {
+            //     Debug.Log(tilePosition);
+            //     t = ConvertToTileIndex(tilePosition);
+            //     Debug.Log(t);
+            // }
+            var t = tilemap.GetTile((Vector3Int) tilePosition);
+            return !(t != null);
         }
 
         private int ConvertToTileIndex(Vector2Int tilePosition)
         {
-            return tilePosition.x + tilePosition.y * bounds.size.x;
+            // var anchorZero = new Vector2Int(bounds.xMax - bounds.size.x - 1, bounds.yMin + bounds.size.y);
+            // var vectorToTilePosition = tilePosition - anchorZero;
+            // vectorToTilePosition.y = -vectorToTilePosition.y;
+            //
+            // return vectorToTilePosition.x + vectorToTilePosition.y * bounds.size.x;
+            return tiles2d[tilePosition];
         }
     }
 
