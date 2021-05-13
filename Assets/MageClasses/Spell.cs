@@ -7,7 +7,7 @@ using Unity.Mathematics;
 
 namespace MageClasses
 {
-    public class Spell : MonoBehaviour, ISpell
+    public class Spell : ISpell
     {
         private string _name;
         private Func<Transform, GameObject, List<IMagic>> _cast;
@@ -28,7 +28,7 @@ namespace MageClasses
             return null;
         }
 
-        public void SetSpell(string name, Func<Transform, GameObject, List<IMagic>> cast,
+        public Spell(string name, Func<Transform, GameObject, List<IMagic>> cast,
             IEffect[] effects, float cooldown, float manacost)
         {
             _name = name;
