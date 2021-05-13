@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ItemsInterfaces;
 using UnitsInterfaces;
 using UnityEngine;
@@ -8,13 +9,13 @@ namespace MageClasses
     public class Book: MonoBehaviour, IItem
     {
         public string Name { get; }
-
-        [SerializeField] private GameObject magicPartical; 
+        
         [SerializeField] private GameObject unit; 
         private ISpell[] _spells;
         private int _splellInd;
         private float[] _cooldowns;
         private float[] _lastUseSpells;
+        private List<IMagic> _lastMagics = null;
 
         public Book(string name)
         {
@@ -56,8 +57,12 @@ namespace MageClasses
         {
             if (_spells[_splellInd] != null && RemainingCooldownTime(_splellInd) == 0)
             {
-                _lastUseSpells[_splellInd] = Time.time;
-                _spells[_splellInd].Cast(unit.transform, magicPartical);
+                var magics = _spells[_splellInd].Cast(unit.transform, unit);
+                if (magics != null)
+                {
+                    _lastMagics = magics;
+                    _lastUseSpells[_splellInd] = Time.time;
+                }
             }
         }
 
