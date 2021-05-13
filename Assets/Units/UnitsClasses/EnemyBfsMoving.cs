@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using InputSystem;
 using UnitsClasses;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 namespace Units.UnitsClasses
@@ -14,6 +16,7 @@ namespace Units.UnitsClasses
         private Vector2 nextPosition;
         private Vector2 requiredVelocity = Vector2.positiveInfinity;
         private PlayerControll controller;
+        private bool isBfs = false;
 
         private void Awake()
         {
@@ -47,18 +50,38 @@ namespace Units.UnitsClasses
         private new void FixedUpdate()
         {
             base.FixedUpdate();
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+            var hits = Physics2D.RaycastAll(
+                transform.position, 
+                player.transform.position - transform.position,
+                (player.transform.position - transform.position).magnitude);
+            if (!hits.Any(hit => hit.collider.CompareTag("Immortal")) 
+                && isBfs && ((Vector2)transform.position - nextPosition).magnitude < 0.1
+                || !isBfs && !hits.Any(hit => hit.collider.CompareTag("Immortal")))
+            {
+                requiredVelocity = Vector2.positiveInfinity;
+                Move(player.transform.position - transform.position);
+                isBfs = false;
+                return;
+            }
+            
+            //Rigidbody.velocity = Vector2.zero;
+            isBfs = true;
             Move();
         }
 
         private void Move()
         {
+            Debug.Log($"{transform.position} {nextPosition} {((Vector2)transform.position - nextPosition).magnitude}");
             if (requiredVelocity != Vector2.positiveInfinity 
-                && (Rigidbody.velocity - requiredVelocity).magnitude < 1e-2)
+                && !(Rigidbody.velocity.magnitude < 1e-2))
             {
-                if (!(((Vector2)transform.position - nextPosition).magnitude < 1e-2))
+                if (!(((Vector2)transform.position - nextPosition).magnitude < 0.1))
                 {
                     return;
                 }
+
+                var k = 0;
             }
             
             var path = pathFinder.FindPathOnTilemap(transform.position, player.transform.position);
@@ -70,8 +93,8 @@ namespace Units.UnitsClasses
 
         private void MoveToPoint(Vector2 point)
         {
-            requiredVelocity = point - (Vector2) transform.position;
-            Move(requiredVelocity);
+            Move(point - (Vector2) transform.position);
+            requiredVelocity = (point - (Vector2) transform.position).normalized * Speed;
         }
     }
 }
