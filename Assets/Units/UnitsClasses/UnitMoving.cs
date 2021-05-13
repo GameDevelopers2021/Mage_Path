@@ -6,10 +6,16 @@ namespace UnitsClasses
 {
     public abstract class UnitMoving : UnitComponent, IMovingComponent
     {
-        public float Speed => speed;
         protected Vector2 MovingDirection = Vector2.zero;
-        [SerializeField] private float speed = 5f;
-        
+        [SerializeField] public float requiredSpeed = 5f;
+        //private float currentSpeed;
+
+        public float Speed => requiredSpeed;
+        // {
+        //     get =>  currentSpeed;
+        //     set => currentSpeed = value;
+        // }
+
         public void Move(Vector2 direction)
         {
             Rigidbody.drag = 0f;
@@ -23,12 +29,18 @@ namespace UnitsClasses
 
         protected void OnCollisionExit2D(Collision2D other)
         {
-            Rigidbody.drag = 5f;
+            Rigidbody.drag = 10f;
         }
 
         protected void FixedUpdate()
         {
             Rigidbody.angularVelocity = 0f;
         }
+
+        // protected new void Awake()
+        // {
+        //     base.Awake();
+        //     //currentSpeed = requiredSpeed;
+        // }
     }
 }

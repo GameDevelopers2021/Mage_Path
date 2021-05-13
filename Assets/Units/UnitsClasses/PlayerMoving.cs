@@ -9,6 +9,7 @@ namespace UnitsClasses
         private PlayerControll controller;
         private Vector2 lastPositionOfMouse;
         private bool isMoving;
+        //private bool isSlowMoving;
 
         private new void Awake()
         {
@@ -25,8 +26,11 @@ namespace UnitsClasses
 
         private new void OnDisable() => controller.Disable();
 
-        private new void OnCollisionExit2D(Collision2D other)
-        { }
+        // private new void OnCollisionExit2D(Collision2D other)
+        // {
+        //     isSlowMoving = false;
+        //     Speed = requiredSpeed;
+        // }
 
         private new void FixedUpdate()
         {
@@ -56,5 +60,17 @@ namespace UnitsClasses
             isMoving = direction != Vector2.zero;
             base.Move(MovingDirection);
         }
+
+        // private void OnCollisionEnter2D(Collision2D other)
+        // {
+        //     if (other.gameObject.CompareTag("Immortal"))
+        //         return;
+        //     
+        //     if (!isSlowMoving)
+        //     {
+        //         Speed *= 0.5f;
+        //         isSlowMoving = true;
+        //     }
+        // }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,34 +7,40 @@ namespace Units.UnitsClasses
 {
     public class TilemapPathFinder
     {
-        private readonly Dictionary<Directions2D, Vector2Int> directionsMatches;
-        private readonly Dictionary<Vector2Int, Directions2D> vectorsMatches;
-        public Tilemap tilemap;
-        private TileBase[] tiles;
-        private Dictionary<Vector2Int, TileBase> tiles2d;
+        private readonly List<Vector2Int> offsets;
+        private readonly Tilemap tilemap;
+        private readonly Dictionary<Vector2Int, TileBase> tiles2d;
+        private readonly Func<Vector2Int, bool> IsReachableCell;
+        private readonly float maxSearchingDistance;
         private BoundsInt bounds;
-        private Func<Vector2Int, bool> IsReachableCell;
+        private Dictionary<Vector2Int, CellInfo> cellsData;
+        private Vector2 startInWorld;
 
-        public TilemapPathFinder(Tilemap tilemap, Func<Vector2Int, bool> ConditionOfReachableCell = null)
+        public Vector2 StartInWorld 
+        { 
+            get => startInWorld;
+            set
+            {
+                startInWorld = value;
+                cellsData = CalculateDataAboutCells((Vector2Int)tilemap.WorldToCell(startInWorld));
+            }
+        }
+
+        public TilemapPathFinder(
+            Tilemap tilemap, 
+            Vector2 startInWorld,
+            float maxSearchingDistance = float.MaxValue,
+            Func<Vector2Int, bool> ConditionOfReachableCell = null)
         {
             this.tilemap = tilemap;
+            this.maxSearchingDistance = maxSearchingDistance;
             IsReachableCell = ConditionOfReachableCell ?? IsEmptyTile;
-            directionsMatches = new Dictionary<Directions2D, Vector2Int>
+            offsets = new List<Vector2Int>
             {
-                {Directions2D.Up, Vector2Int.up},
-                {Directions2D.Down, Vector2Int.down},
-                {Directions2D.Left, Vector2Int.left},
-                {Directions2D.Right, Vector2Int.right}
-            };
-            vectorsMatches = new Dictionary<Vector2Int, Directions2D>
-            {
-                {Vector2Int.up, Directions2D.Up},
-                {Vector2Int.down, Directions2D.Down},
-                {Vector2Int.left, Directions2D.Left},
-                {Vector2Int.right, Directions2D.Right}
+                Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right
             };
             bounds = tilemap.cellBounds;
-            tiles = tilemap.GetTilesBlock(bounds);
+            var tiles = tilemap.GetTilesBlock(bounds);
             tiles2d = new Dictionary<Vector2Int, TileBase>();
             var k = 0;
             for (var i = bounds.yMin; i < bounds.yMax; i++)
@@ -44,36 +49,49 @@ namespace Units.UnitsClasses
                 tiles2d[new Vector2Int(j, i)] = tiles[k];
                 k++;
             }
+            StartInWorld = startInWorld;
         }
 
-        public List<Vector2> FindPathOnTilemap(Vector2 startInWorld, Vector2 finishInWorld)
+        public List<Vector2> FindPathOnTilemap(Vector2 finishInWorld)
         {
             var startCell = (Vector2Int)tilemap.WorldToCell(startInWorld);
             var finishCell = (Vector2Int)tilemap.WorldToCell(finishInWorld);
             
-            return FindDirectionsPathOnTilemap(startCell, finishCell);
+            return GetPathFromSearchingInfo(cellsData, startCell, finishCell);
         }
 
-        private List<Vector2> FindDirectionsPathOnTilemap(Vector2Int start, Vector2Int finish)
+        public Vector2 GetNextPointOfPath(Vector2 currentPositionInWorld)
+        {
+            var currentCell = (Vector2Int)tilemap.WorldToCell(currentPositionInWorld);
+
+            if (cellsData.TryGetValue(currentCell, out var currentCellInfo))
+            {
+                return tilemap.GetCellCenterWorld((Vector3Int)currentCellInfo.PreviousCellPosition);
+            }
+
+            throw new ArgumentException("No path from current position");
+        }
+
+        private Dictionary<Vector2Int, CellInfo> CalculateDataAboutCells(Vector2Int start)
         {
             var used = new HashSet<Vector2Int>();
             var queue = new Queue<Vector2Int>();
-            var searchingData = new Dictionary<Vector2Int, SearchingInfo>();
+            var result = new Dictionary<Vector2Int, CellInfo>();
 
             queue.Enqueue(start);
-            searchingData[start] = new SearchingInfo(start, 0);
+            result[start] = new CellInfo(start, 0);
             while (queue.Count != 0)
             {
                 var cell = queue.Dequeue();
-                var cellInfo = searchingData[cell];
-                foreach (var offset in directionsMatches.Select(keyValue => keyValue.Value))
+                var cellInfo = result[cell];
+                foreach (var offset in offsets)
                 {
                     var adjacentCell = cell + offset;
                     if (!IsReachableCell(adjacentCell))
                         continue;
-                    if (!searchingData.TryGetValue(adjacentCell, out var adjacentCellInfo))
+                    if (!result.TryGetValue(adjacentCell, out var adjacentCellInfo))
                     {
-                        searchingData[adjacentCell] = new SearchingInfo(cell, cellInfo.Distance + 1);
+                        result[adjacentCell] = new CellInfo(cell, cellInfo.Distance + 1);
                     }
                     else
                     {
@@ -92,11 +110,11 @@ namespace Units.UnitsClasses
                 }
             }
 
-            return GetPathFromSearchingInfo(searchingData, start, finish);
+            return result;
         }
 
         private List<Vector2> GetPathFromSearchingInfo(
-            Dictionary<Vector2Int, SearchingInfo> searchingData, 
+            Dictionary<Vector2Int, CellInfo> mapData, 
             Vector2Int start, 
             Vector2Int finish)
         {
@@ -106,8 +124,9 @@ namespace Units.UnitsClasses
             while (currentCell != start)
             {
                 result.Add(tilemap.GetCellCenterWorld((Vector3Int)currentCell));
-                currentCell = searchingData[currentCell].PreviousCellPosition;
+                currentCell = mapData[currentCell].PreviousCellPosition;
             }
+            result.Add(tilemap.GetCellCenterWorld((Vector3Int)currentCell));
 
             result.Reverse();
             return result;
@@ -134,23 +153,15 @@ namespace Units.UnitsClasses
         }
     }
 
-    internal class SearchingInfo
+    internal class CellInfo
     {
         public Vector2Int PreviousCellPosition { get; set; }
         public int Distance { get; set; }
         
-        public SearchingInfo(Vector2Int previous, int distance = int.MaxValue)
+        public CellInfo(Vector2Int previous, int distance = int.MaxValue)
         {
             PreviousCellPosition = previous;
             Distance = distance;
         }
-    }
-
-    internal enum Directions2D
-    {
-        Up,
-        Down,
-        Right,
-        Left
     }
 }
