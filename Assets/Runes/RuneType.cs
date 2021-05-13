@@ -1,4 +1,4 @@
-namespace SpellBuilderWithRune
+namespace Runes
 {
     public enum RuneType
     {
