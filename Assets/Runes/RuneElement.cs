@@ -1,22 +1,15 @@
 using ItemsInterfaces;
 using MageClasses;
 using SpellBuilderWithRune;
+using UnityEngine;
 
 namespace Runes
 {
-    public class RuneElement : IRune 
+    public class RuneElement : Rune
     {
-        public RuneElement(string name, MagicElement element, IEffect specialEffect)
-        {
-            Name = name;
-            Element = element;
-            SpecialEffect = specialEffect;
-        }
-
-        public string Name { get; }
         public RuneType Type => RuneType.Element;
-        public MagicElement Element { get; }
-        public IEffect SpecialEffect { get; }
         
+        [SerializeField] public MagicElement Element;
+        [SerializeField] public IEffect SpecialEffect;
     }
 }

@@ -644,6 +644,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &401676854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401676855}
+  - component: {fileID: 401676856}
+  m_Layer: 0
+  m_Name: TEST
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401676855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401676854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.752184, y: 12.406191, z: -0.74240506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &401676856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401676854}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f40de209ad44624861356b6dbdac318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circle: {fileID: 7215850733002868504, guid: a5d5627ea34976d4998ea103f170ca2b, type: 3}
 --- !u!1 &451904754
 GameObject:
   m_ObjectHideFlags: 0
@@ -20499,7 +20543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7a9256b9514a3cb21e0f9e2ee36c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
 --- !u!50 &577376046
 Rigidbody2D:
   serializedVersion: 4
@@ -20717,7 +20760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 322e366d5dee90e4d9942ce1c80e8f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishMenu: {fileID: 1713282976}
 --- !u!1 &830100632
 GameObject:
   m_ObjectHideFlags: 0
@@ -21004,6 +21046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 700
   cooldown: 0
+  MagicPartical: {fileID: 577376044}
 --- !u!4 &1343000470
 Transform:
   m_ObjectHideFlags: 0
@@ -26705,7 +26748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066941663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3, y: -2.2, z: 0}
+  m_LocalPosition: {x: -2.49, y: -2.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -26799,5 +26842,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2314b1f86e748c48359fc99cb4ede57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicPartical: {fileID: 577376044}
   unit: {fileID: 2066941663}

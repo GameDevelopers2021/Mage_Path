@@ -11,6 +11,6 @@ namespace MageClasses
         float Cooldown { get; }
         float ManaCost { get; }
 
-        List<IMagic> Cast(Transform playersTransform, GameObject magicPartical);
+        List<IMagic> Cast(Transform casterTransform, GameObject caster); 
     }
 }

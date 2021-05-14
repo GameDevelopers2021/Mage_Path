@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runes
 {
-    public class RuneParameter : IRune
+    public class RuneParameter : Rune
     {
         public RuneParameter(string name, Dictionary<FloatMagicParameter, float> parameterAdd, Dictionary<FloatMagicParameter, float> parameterMulti, Dictionary<BoolMagicParameters, bool> flags)
         {
