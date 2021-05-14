@@ -5,7 +5,13 @@ public class UiHandler : MonoBehaviour
 {
     public void HandleToNextLevel()
     {
-        Application.Quit();
-        //EditorApplication.ExitPlaymode();
+        //Application.Quit();
+        EditorApplication.ExitPlaymode();
+    }
+
+    public void HandleExit()
+    {
+        //Application.Quit();
+        EditorApplication.ExitPlaymode();
     }
 }
