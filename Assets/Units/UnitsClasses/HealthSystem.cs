@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using MageClasses;
+﻿using MageClasses;
 using Units.UnitsClasses;
 using UnityEngine;
 using UnityEngine.UI;
