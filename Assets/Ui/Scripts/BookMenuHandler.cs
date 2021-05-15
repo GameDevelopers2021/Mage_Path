@@ -11,19 +11,11 @@ namespace Ui.Scripts
     {
         private UiController controller;
         private Book bookComponent;
-        
-        //public GameObject BookMenu { get; set; }
-        
+
         private void Awake()
         {
             controller = new UiController();
-            // var player = GameObject.FindWithTag("Player");
-            // foreach (var c in player.GetComponents(typeof(PlayerMoving)))
-            // {
-            //     Debug.Log(c);
-            // }
             bookComponent = GameObject.FindWithTag("Player").GetComponent<Book>();
-            // Debug.Log(bookComponent.Length);
             controller.BookMenu.NextSpell.performed += context => NextSpell();
             controller.BookMenu.PreviousSpell.performed += context => PreviousSpell();
             
