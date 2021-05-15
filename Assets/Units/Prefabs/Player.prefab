@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 635887893822222665}
   - component: {fileID: 635887893822222664}
   - component: {fileID: 3159155886826190904}
+  - component: {fileID: 2066941664}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -151,9 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd696449b3f54b588a56e12fd2015184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   ui: {fileID: 0}
-  gameOverMenu: {fileID: 0}
+  gameOverSceneName: Scenes/ExitMenu
+  itemOnDeath: {fileID: 0}
 --- !u!114 &635887893822222665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,5 +193,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fafce34f7917f24186b05ff8584d858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2066941664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635887893822222705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad296fdcb8cd4b159ad04c411bb6154f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

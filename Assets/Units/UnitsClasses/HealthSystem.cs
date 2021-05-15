@@ -1,6 +1,7 @@
 ﻿using MageClasses;
 using Units.UnitsClasses;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UnitsClasses
@@ -9,7 +10,7 @@ namespace UnitsClasses
     {
         [SerializeField] private int health = 100;
         [SerializeField] private Text ui;
-        [SerializeField] private GameObject gameOverMenu;
+        [SerializeField] private string gameOverSceneName;
         [SerializeField] private GameObject itemOnDeath;
         private ColorMarkerComponent marker;
 
@@ -35,9 +36,9 @@ namespace UnitsClasses
                     }
 
                     Destroy(gameObject);
-                    
-                    if (gameOverMenu != null)
-                        gameOverMenu.SetActive(true);
+
+                    if (gameOverSceneName != null)
+                        SceneManager.LoadScene(gameOverSceneName);
                 }
             }
         }
