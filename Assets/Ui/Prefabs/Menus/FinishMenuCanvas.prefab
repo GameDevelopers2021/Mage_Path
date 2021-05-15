@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4788026051265007777}
   - component: {fileID: 7614679163584418152}
   - component: {fileID: 2951304317074382497}
+  - component: {fileID: 554418384112877017}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &554418384112877017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406921407565884972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae299de918603148b408b96a74dc02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2798984273085418949
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +102,7 @@ GameObject:
   - component: {fileID: 2622592088422846524}
   - component: {fileID: 2031219060314767345}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: NextLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +209,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2622592088422846524}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 554418384112877017}
+        m_TargetAssemblyTypeName: Ui.Scripts.SimpleMenuHandler, Assembly-CSharp
+        m_MethodName: GoToNextScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4140805877843545699
 GameObject:
   m_ObjectHideFlags: 0

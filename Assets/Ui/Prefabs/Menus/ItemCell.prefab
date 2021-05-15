@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7236069898010349841}
   m_Layer: 5
   m_Name: Name
-  m_TagString: Untagged
+  m_TagString: ItemName
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 4308518565979609710}
   m_Layer: 5
   m_Name: StateMarker
-  m_TagString: Untagged
+  m_TagString: StateMarker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 1988482098576395903}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: ItemImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 1182164840169828607}
   m_Layer: 5
   m_Name: ActivateButton
-  m_TagString: Untagged
+  m_TagString: ActivateButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

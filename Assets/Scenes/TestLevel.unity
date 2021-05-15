@@ -137,7 +137,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: pathFindingSystem
@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054422801941126510, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5365565439878359026, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_RootOrder
@@ -283,7 +283,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: pathFindingSystem
@@ -295,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054422801941126510, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5365565439878359026, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_RootOrder
@@ -21077,7 +21077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: pathFindingSystem
@@ -21089,7 +21089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054422801941126510, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5365565439878359026, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_RootOrder
@@ -26009,7 +26009,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: pathFindingSystem
@@ -26021,7 +26021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054422801941126510, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5365565439878359026, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_RootOrder
@@ -26343,10 +26343,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2798984273085418949, guid: cca76b5c8de70014386319ca9c51fbe6, type: 3}
-      propertyPath: m_Name
-      value: NextLevelButton
-      objectReference: {fileID: 0}
     - target: {fileID: 4847593506767572427, guid: cca76b5c8de70014386319ca9c51fbe6, type: 3}
       propertyPath: m_Name
       value: FinishMenuCanvas
@@ -26564,10 +26560,6 @@ PrefabInstance:
     - target: {fileID: 2615079429146711637, guid: 4b2816ead9b98e641b2ba92f86f035fa, type: 3}
       propertyPath: m_Name
       value: BookMenuCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615079429146711637, guid: 4b2816ead9b98e641b2ba92f86f035fa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2615079429146711638, guid: 4b2816ead9b98e641b2ba92f86f035fa, type: 3}
       propertyPath: m_Camera
