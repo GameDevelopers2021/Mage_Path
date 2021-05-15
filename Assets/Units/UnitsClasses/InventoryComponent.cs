@@ -53,7 +53,7 @@ namespace Units.UnitsClasses
             for (var i = 0; i < inventorySize.x; i++)
             for (var j = 0; j < inventorySize.y; j++)
             {
-                result.Add((IInventoryItem)items[i, j].Clone());
+                result.Add((IInventoryItem)items[i, j]?.Clone());
             }
 
             return result;

@@ -1,25 +1,30 @@
 ﻿using ItemsInterfaces;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Items
 {
     public class SimpleInventoryItem : IInventoryItem
     {
         public string Name => "Simple item";
-        public Image Image { get; set; }
+        public Sprite ItemSprite { get; set; }
         public bool IsActivate => state;
 
         private bool state;
 
         public SimpleInventoryItem(Image image)
         {
-            Image = image;
+            ItemSprite = image.sprite;
+        }
+
+        public SimpleInventoryItem(Sprite sprite)
+        {
+            ItemSprite = sprite;
         }
 
         public object Clone()
         {
-            return new SimpleInventoryItem(Image);
+            return new SimpleInventoryItem(ItemSprite);
         }
 
         public void UseFromInventoryBy(GameObject unit)

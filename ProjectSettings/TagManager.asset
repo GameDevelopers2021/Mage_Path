@@ -7,6 +7,12 @@ TagManager:
   - Enemy
   - Immortal
   - Magic
+  - ItemCell
+  - CraftCell
+  - StateMarker
+  - ItemImage
+  - ActivateButton
+  - ItemName
   layers:
   - Default
   - TransparentFX

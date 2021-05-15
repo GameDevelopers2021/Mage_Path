@@ -63,7 +63,7 @@ namespace Units.UnitsClasses
             {
                 nextPosition = pathFindingSystem.GetNextPosition(transform.position);
             }
-            catch (ArgumentException exception)
+            catch (ArgumentException)
             {
                 Rigidbody.velocity = Vector2.zero;
             }

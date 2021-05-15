@@ -1,13 +1,13 @@
 ﻿using System;
 using CommonInterfaces;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace ItemsInterfaces
 {
     public interface IInventoryItem : INamed, ICloneable
     {
-        Image Image { get; set; }
+        Sprite ItemSprite { get; set; }
         bool IsActivate { get; }
         
         void UseFromInventoryBy(GameObject unit);

@@ -1,0 +1,161 @@
+{
+    "name": "UiController",
+    "maps": [
+        {
+            "name": "BookMenu",
+            "id": "9f0a4e54-f93a-45da-b0ac-a6c5936c2682",
+            "actions": [
+                {
+                    "name": "ChangeSpell",
+                    "type": "PassThrough",
+                    "id": "8baee57d-67a2-49db-a2dd-d8fa1245a338",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3909475e-9837-4428-befd-da94e65891b4",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "509a18e9-d4d5-4959-9cec-6c88bb751622",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "fc0c1c27-ad3f-46a8-b4b2-aa21c2959f3b",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "PassThrough",
+                    "id": "b8d90b90-f0c3-4342-972e-dc6c2c4e5c86",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "6cea72aa-5e0e-408d-bc9c-4aafc37fb712",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Exit",
+                    "type": "PassThrough",
+                    "id": "0a55a0a2-ce0a-4ea7-9089-9ed87695c989",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Open",
+                    "type": "PassThrough",
+                    "id": "47944862-8851-435f-8f28-18cf8c52aae9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2fbab76c-813d-4979-bec3-f8e18496b1dc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f34620f3-dd03-4c5c-95aa-6abf9659ae21",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f614025a-844c-42b2-89ec-010659cdb10c",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5d9463a-a14c-4676-a3fc-bf8f0cb51c33",
+                    "path": "<Pen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34608f5e-bc01-4ce9-ad30-2b2327083725",
+                    "path": "<Touchscreen>/touch*/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df40fc6b-e57c-4e0f-a6cc-15a01bf38402",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42bc62a8-3375-49a7-a789-8da754e6880f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

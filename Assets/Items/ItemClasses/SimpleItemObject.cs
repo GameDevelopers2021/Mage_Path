@@ -1,7 +1,7 @@
 ﻿using ItemsInterfaces;
 using Units.UnitsClasses;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Items
 {
@@ -9,7 +9,7 @@ namespace Items
     {
         public string Name => "Simple Item";
         public IInventoryItem InventoryItem { get; set; }
-
+        
         [SerializeField] private Image inventoryImage;
 
         public void UseBy(GameObject unit)
