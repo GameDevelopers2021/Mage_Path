@@ -9,12 +9,12 @@ namespace MageClasses
     public class BasicSpell: MonoBehaviour, ISpell
     {
         public float speed = 0.1f; 
-        public float cooldown = 1.5f;
+        public float cooldownInSeconds = 1.5f;
         [SerializeField] GameObject MagicPartical;
         public string Name { get; }
 
         public IEffect[] Effects { get; }
-        public float Cooldown => cooldown;
+        public float Cooldown => cooldownInSeconds;
         public float ManaCost => 10f;
 
         public List<IMagic> Cast(Transform playersTransform, GameObject unit)
@@ -48,7 +48,7 @@ namespace MageClasses
         {
             Effects = effects;
             Name = name;
-            cooldown = 1.5f;
+            cooldownInSeconds = 1.5f;
         }
     }
 }

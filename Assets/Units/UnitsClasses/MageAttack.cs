@@ -14,12 +14,18 @@ namespace UnitsClasses
         {
             base.Awake();
             currentBook = GetComponent<Book>();
-            currentBook.SetSize(1);
-            currentBook.WriteSpell(basicSpell, 0);
+            currentBook.SetSize(3);
+            currentBook.WriteSpell(
+                new Spell(
+                    "Basic spell", 
+                    basicSpell.Cast, 
+                    basicSpell.Effects,
+                    basicSpell.cooldownInSeconds,
+                    basicSpell.ManaCost), 
+                0);
             controller = new MageController();
             controller.MageActions.CastSpell.performed += context =>
             {
-                //Debug.Log("Push");
                 currentBook.Cast();
             };
         }

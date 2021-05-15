@@ -23,10 +23,9 @@ namespace UnitsClasses
                     marker.Mark();
                 
                 health = value;
-                if (ui != null)
-                {
-                    ui.text = $"Health: {health}";
-                }
+                
+                UpdateUi();
+                
                 if (health <= 0)
                 {
                     if (itemOnDeath != null)
@@ -48,11 +47,16 @@ namespace UnitsClasses
             Health -= Damage;
         }
 
+        private void UpdateUi()
+        {
+            if (ui != null)
+                ui.text = $"Health: {health}";
+        }
+
         private void Start()
         {
             marker = GetComponent<ColorMarkerComponent>();
-            if (ui != null)
-                ui.text = $"Health {health}";
+            UpdateUi();
         }
     }
 }

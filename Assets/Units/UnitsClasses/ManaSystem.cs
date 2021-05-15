@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UnitsClasses
 {
@@ -7,6 +8,7 @@ namespace UnitsClasses
     {
         [SerializeField] private float maxMana = 200;
         [SerializeField] private float manaRegen = 5f;
+        [SerializeField] private Text ui;
         private float _actualMana = 200;
 
         public float Mana
@@ -15,6 +17,10 @@ namespace UnitsClasses
             set
             {
                 _actualMana = value;
+                if (ui != null)
+                {
+                    ui.text = $"Mana: {(int)_actualMana}";
+                }
                 if (_actualMana < 0)
                 {
                     Debug.Log(gameObject.name + " Non valid mana");
