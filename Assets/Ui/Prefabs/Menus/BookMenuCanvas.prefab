@@ -58,7 +58,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &2615079429146711639
 MonoBehaviour:
@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 2615079430250500177}
   - component: {fileID: 2615079430250500179}
   - component: {fileID: 2615079430250500176}
+  - component: {fileID: 277097566}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -178,6 +179,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &277097566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615079430250500190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2f41055ed06fe499af6e1623a86a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8048547193228348346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,6 +201,14 @@ PrefabInstance:
     - target: {fileID: 4897991146297305924, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
       propertyPath: m_Name
       value: Spell
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897991146297305924, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
+      propertyPath: m_TagString
+      value: ItemCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818966382875344750, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8329998408910565957, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
       propertyPath: m_Pivot.x
@@ -291,6 +312,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spell
       objectReference: {fileID: 0}
+    - target: {fileID: 4897991146297305924, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
+      propertyPath: m_TagString
+      value: ItemCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818966382875344750, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8329998408910565957, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -392,6 +421,14 @@ PrefabInstance:
     - target: {fileID: 4897991146297305924, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
       propertyPath: m_Name
       value: Spell
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897991146297305924, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
+      propertyPath: m_TagString
+      value: ItemCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818966382875344750, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8329998408910565957, guid: 1f7224d113e537b41bf355104f83876c, type: 3}
       propertyPath: m_Pivot.x

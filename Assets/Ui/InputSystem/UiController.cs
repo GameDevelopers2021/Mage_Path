@@ -21,10 +21,18 @@ namespace InputSystem
             ""id"": ""9f0a4e54-f93a-45da-b0ac-a6c5936c2682"",
             ""actions"": [
                 {
-                    ""name"": ""ChangeSpell"",
-                    ""type"": ""PassThrough"",
+                    ""name"": ""PreviousSpell"",
+                    ""type"": ""Value"",
                     ""id"": ""8baee57d-67a2-49db-a2dd-d8fa1245a338"",
-                    ""expectedControlType"": ""Integer"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextSpell"",
+                    ""type"": ""Value"",
+                    ""id"": ""5881e1a2-5aee-436b-b36a-4a1c7038dc39"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -37,7 +45,7 @@ namespace InputSystem
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeSpell"",
+                    ""action"": ""PreviousSpell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -48,7 +56,7 @@ namespace InputSystem
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeSpell"",
+                    ""action"": ""NextSpell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -176,7 +184,8 @@ namespace InputSystem
 }");
             // BookMenu
             m_BookMenu = asset.FindActionMap("BookMenu", throwIfNotFound: true);
-            m_BookMenu_ChangeSpell = m_BookMenu.FindAction("ChangeSpell", throwIfNotFound: true);
+            m_BookMenu_PreviousSpell = m_BookMenu.FindAction("PreviousSpell", throwIfNotFound: true);
+            m_BookMenu_NextSpell = m_BookMenu.FindAction("NextSpell", throwIfNotFound: true);
             // Menu
             m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
             m_Menu_Click = m_Menu.FindAction("Click", throwIfNotFound: true);
@@ -232,12 +241,14 @@ namespace InputSystem
         // BookMenu
         private readonly InputActionMap m_BookMenu;
         private IBookMenuActions m_BookMenuActionsCallbackInterface;
-        private readonly InputAction m_BookMenu_ChangeSpell;
+        private readonly InputAction m_BookMenu_PreviousSpell;
+        private readonly InputAction m_BookMenu_NextSpell;
         public struct BookMenuActions
         {
             private @UiController m_Wrapper;
             public BookMenuActions(@UiController wrapper) { m_Wrapper = wrapper; }
-            public InputAction @ChangeSpell => m_Wrapper.m_BookMenu_ChangeSpell;
+            public InputAction @PreviousSpell => m_Wrapper.m_BookMenu_PreviousSpell;
+            public InputAction @NextSpell => m_Wrapper.m_BookMenu_NextSpell;
             public InputActionMap Get() { return m_Wrapper.m_BookMenu; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -247,16 +258,22 @@ namespace InputSystem
             {
                 if (m_Wrapper.m_BookMenuActionsCallbackInterface != null)
                 {
-                    @ChangeSpell.started -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnChangeSpell;
-                    @ChangeSpell.performed -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnChangeSpell;
-                    @ChangeSpell.canceled -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnChangeSpell;
+                    @PreviousSpell.started -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnPreviousSpell;
+                    @PreviousSpell.performed -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnPreviousSpell;
+                    @PreviousSpell.canceled -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnPreviousSpell;
+                    @NextSpell.started -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnNextSpell;
+                    @NextSpell.performed -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnNextSpell;
+                    @NextSpell.canceled -= m_Wrapper.m_BookMenuActionsCallbackInterface.OnNextSpell;
                 }
                 m_Wrapper.m_BookMenuActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @ChangeSpell.started += instance.OnChangeSpell;
-                    @ChangeSpell.performed += instance.OnChangeSpell;
-                    @ChangeSpell.canceled += instance.OnChangeSpell;
+                    @PreviousSpell.started += instance.OnPreviousSpell;
+                    @PreviousSpell.performed += instance.OnPreviousSpell;
+                    @PreviousSpell.canceled += instance.OnPreviousSpell;
+                    @NextSpell.started += instance.OnNextSpell;
+                    @NextSpell.performed += instance.OnNextSpell;
+                    @NextSpell.canceled += instance.OnNextSpell;
                 }
             }
         }
@@ -320,7 +337,8 @@ namespace InputSystem
         public MenuActions @Menu => new MenuActions(this);
         public interface IBookMenuActions
         {
-            void OnChangeSpell(InputAction.CallbackContext context);
+            void OnPreviousSpell(InputAction.CallbackContext context);
+            void OnNextSpell(InputAction.CallbackContext context);
         }
         public interface IMenuActions
         {

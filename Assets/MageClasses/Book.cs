@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Items;
 using ItemsInterfaces;
 using UnitsInterfaces;
 using UnityEngine;
@@ -101,5 +103,25 @@ namespace MageClasses
         {
             throw new System.NotImplementedException(); 
         }
+
+        public List<IInventoryItem> GetSpellsAsInventoryItems()
+        {
+            var k = -1;
+            return _spells
+                .Select(spell =>
+                {
+                    k++;
+                    var inventoryItem = (IInventoryItem) new SimpleInventoryItem(null, "Spell");
+                    if (k == SpellIndexer)
+                        inventoryItem.Activate();
+                    return inventoryItem;
+                })
+                .ToList();
+        }
+
+        // private void Awake()
+        // {
+        //     SetSize(3);
+        // }
     }
 }

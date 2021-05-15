@@ -18,7 +18,7 @@ namespace Ui.Scripts
         public ItemCell(Transform cellObjectTransform)
         {
             CellObjectTransform = cellObjectTransform;
-            UnityEditorHelper.InvokeForEveryChild(CellObjectTransform, childTransform =>
+            UnityHelper.InvokeForEveryChild(CellObjectTransform, childTransform =>
             {
                 switch (childTransform.tag)
                 {

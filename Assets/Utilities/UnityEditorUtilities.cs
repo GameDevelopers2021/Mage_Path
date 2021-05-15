@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Utilities
 {
-    public static class UnityEditorHelper
+    public static class UnityHelper
     {
         public static void InvokeForEveryChild(Transform objectTransform, Action<Transform> action)
         {

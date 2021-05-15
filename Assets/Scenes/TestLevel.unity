@@ -1982,6 +1982,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BookMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2615079429146711637, guid: 4b2816ead9b98e641b2ba92f86f035fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2615079429146711638, guid: 4b2816ead9b98e641b2ba92f86f035fa, type: 3}
       propertyPath: m_Camera
       value: 

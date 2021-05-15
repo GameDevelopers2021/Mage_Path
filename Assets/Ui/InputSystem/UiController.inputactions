@@ -6,10 +6,18 @@
             "id": "9f0a4e54-f93a-45da-b0ac-a6c5936c2682",
             "actions": [
                 {
-                    "name": "ChangeSpell",
-                    "type": "PassThrough",
+                    "name": "PreviousSpell",
+                    "type": "Value",
                     "id": "8baee57d-67a2-49db-a2dd-d8fa1245a338",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NextSpell",
+                    "type": "Value",
+                    "id": "5881e1a2-5aee-436b-b36a-4a1c7038dc39",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -22,7 +30,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeSpell",
+                    "action": "PreviousSpell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -33,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeSpell",
+                    "action": "NextSpell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

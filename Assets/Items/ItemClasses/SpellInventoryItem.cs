@@ -1,44 +1,36 @@
 ﻿using ItemsInterfaces;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Items
 {
-    public class SimpleInventoryItem : IInventoryItem
+    public class SpellInventoryItem : IInventoryItem
     {
-        private string name = "Simple item";
-        public string Name
-        {
+        private string name = "Spell";
+        private bool state;
+        public string Name 
+        { 
             get => name;
             private set => name = value;
         }
-
         public Sprite ItemSprite { get; set; }
         public bool IsActivate => state;
-
-        private bool state;
-
-        public SimpleInventoryItem(Image image)
-        {
-            ItemSprite = image.sprite;
-        }
-
-        public SimpleInventoryItem(Sprite sprite)
+        
+        public SpellInventoryItem(Sprite sprite)
         {
             ItemSprite = sprite;
         }
-        
-        public SimpleInventoryItem(Sprite sprite, string name)
+
+        public SpellInventoryItem(Sprite sprite, string name)
         {
             ItemSprite = sprite;
             Name = name;
         }
-
+        
         public object Clone()
         {
-            return new SimpleInventoryItem(ItemSprite, name);
+            return new SpellInventoryItem(ItemSprite, name);
         }
-
+        
         public void Activate()
         {
             state = true;
