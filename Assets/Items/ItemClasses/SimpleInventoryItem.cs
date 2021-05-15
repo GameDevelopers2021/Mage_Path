@@ -36,5 +36,10 @@ namespace Items
         {
             state = true;
         }
+
+        public void Deactivate()
+        {
+            state = false;
+        }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using CommonInterfaces;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace ItemsInterfaces
 {
@@ -10,7 +9,7 @@ namespace ItemsInterfaces
         Sprite ItemSprite { get; set; }
         bool IsActivate { get; }
         
-        void UseFromInventoryBy(GameObject unit);
         void Activate();
+        void Deactivate();
     }
 }

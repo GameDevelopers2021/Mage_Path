@@ -58,6 +58,7 @@ namespace Ui.Scripts
         public GameObject StateMarker { get; private set; }
         public Image CellImage { get; private set; }
         public Text Name { get; private set; }
+        public Button ActivateButton { get; private set; }
 
         public ItemCell(Transform cellObjectTransform)
         {
@@ -70,10 +71,29 @@ namespace Ui.Scripts
                         StateMarker = childTransform.gameObject;
                         break;
                     case "ItemImage":
-                        CellImage = childTransform.gameObject.GetComponent<Image>();
+                        CellImage = childTransform.GetComponent<Image>();
                         break;
                     case "ItemName":
-                        Name = childTransform.gameObject.GetComponent<Text>();
+                        Name = childTransform.GetComponent<Text>();
+                        break;
+                    case "ActivateButton":
+                        ActivateButton = childTransform.GetComponent<Button>();
+                        ActivateButton.onClick.AddListener(() =>
+                        {
+                            Debug.Log("Activate click");
+                            if (Item == null)
+                                return;
+                            if (!Item.IsActivate)
+                            {
+                                Item.Activate();
+                            }
+                            else
+                            {
+                                Item.Deactivate();
+                            }
+
+                            StateMarker.SetActive(Item.IsActivate);
+                        });
                         break;
                 }
             });
@@ -89,9 +109,9 @@ namespace Ui.Scripts
         public void InitWithInventoryItem(IInventoryItem item)
         {
             Item = item;
-            Name.text = item.Name;
-            CellImage.sprite = item.ItemSprite;
-            StateMarker.SetActive(item.IsActivate);
+            Name.text = item?.Name ?? "Empty";
+            CellImage.sprite = item?.ItemSprite;
+            StateMarker.SetActive(item?.IsActivate ?? false);
         }
     }
 }
