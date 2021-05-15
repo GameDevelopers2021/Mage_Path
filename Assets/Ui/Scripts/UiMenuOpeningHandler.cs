@@ -22,18 +22,6 @@ namespace Ui.Scripts
         public GameObject FinishMenu { get; set; }
         public GameObject PauseMenu { get; set; }
 
-        // public void HandleToNextLevel()
-        // {
-        //     //Application.Quit();
-        //     EditorApplication.ExitPlaymode();
-        // }
-        //
-        // public void HandleExit()
-        // {
-        //     //Application.Quit();
-        //     EditorApplication.ExitPlaymode();
-        // }
-
         public void PressSignal()
         {
             Debug.Log("Pressed");

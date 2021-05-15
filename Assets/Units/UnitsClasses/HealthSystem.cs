@@ -10,6 +10,7 @@ namespace UnitsClasses
         [SerializeField] private int health = 100;
         [SerializeField] private Text ui;
         [SerializeField] private GameObject gameOverMenu;
+        [SerializeField] private GameObject itemOnDeath;
         private ColorMarkerComponent marker;
 
         public int Health
@@ -27,7 +28,14 @@ namespace UnitsClasses
                 }
                 if (health <= 0)
                 {
+                    if (itemOnDeath != null)
+                    {
+                        var clone = Instantiate(itemOnDeath);
+                        clone.transform.position = transform.position;
+                    }
+
                     Destroy(gameObject);
+                    
                     if (gameOverMenu != null)
                         gameOverMenu.SetActive(true);
                 }
