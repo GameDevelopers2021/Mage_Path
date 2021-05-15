@@ -9,7 +9,8 @@ namespace MageClasses
     {
         IEffect[] Effects { get; }
         float Cooldown { get; }
-        
-        List<IMagic> Cast(Transform playersTransform, GameObject magicPartical);
+        float ManaCost { get; }
+
+        List<IMagic> Cast(Transform casterTransform, GameObject caster); 
     }
 }

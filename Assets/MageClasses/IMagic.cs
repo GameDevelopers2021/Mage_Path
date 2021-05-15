@@ -8,6 +8,7 @@ namespace MageClasses
         IEffect[] Effects { get; }
         bool IsSelfFire { get; }
         bool IsTunel { get; }
-        bool MagicUpdate(Rigidbody2D rigidbody);
+        bool IsBounce { get; }
+        bool MagicUpdate(float time);
     }
 }

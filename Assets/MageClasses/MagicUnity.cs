@@ -6,15 +6,18 @@ namespace MageClasses
 {
     public class MagicUnity:MonoBehaviour
     {
-        public Rigidbody2D rigidbody;
-        public Magic magic { get; set; }
-        public Collider2D collider { get; set; }
+        private Rigidbody2D _rigidbody;
+        private Collider2D _collider;
+        
+        public float StartTime { get; set; }
+
+        public Magic Magic { get; set; }
 
         public void FixedUpdate()
         {
-            if (magic != null)
+            if (Magic != null)
             {
-                if (!magic.MagicUpdate(rigidbody))
+                if (!Magic.MagicUpdate(Time.time - StartTime))
                 {
                     Destroy(gameObject);
                 }
@@ -23,8 +26,8 @@ namespace MageClasses
 
         public void Start()
         {
-            rigidbody = gameObject.GetComponent<Rigidbody2D>();
-            collider = gameObject.GetComponent<CircleCollider2D>();
+            _rigidbody = gameObject.GetComponent<Rigidbody2D>();
+            _collider = gameObject.GetComponent<Collider2D>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -36,11 +39,11 @@ namespace MageClasses
             }else if (gameObjectTag == "Magic") { } // Magic-Magic collision TODO
             else
             {
-                if (!(gameObjectTag == "Player" && !magic.IsSelfFire))
+                if (!(gameObjectTag == "Player" && !Magic.IsSelfFire))
                 {   
-                    magic.ApplyEffects(other.gameObject);
+                    Magic.ApplyEffects(other.gameObject);
                 }
-                if (!magic.IsTunel)
+                if (!Magic.IsTunel)
                 {
                     Destroy(gameObject);
                 }
