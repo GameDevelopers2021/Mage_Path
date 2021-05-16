@@ -27,17 +27,17 @@ namespace UnitsClasses
                         basicSpell.inventoryImage,
                         basicSpell.inventoryName)), 
                 0);
-            currentBook.WriteSpell(
-                new Spell(
-                    "> 50 mana", 
-                    basicSpell.Cast, 
-                    basicSpell.Effects,
-                    basicSpell.cooldownInSeconds,
-                    basicSpell.ManaCost + 50,
-                    new InventoryItem(
-                        basicSpell.inventoryImage,
-                        "> 50 mana")), 
-                2);
+            // currentBook.WriteSpell(
+            //     new Spell(
+            //         "> 50 mana", 
+            //         basicSpell.Cast, 
+            //         basicSpell.Effects,
+            //         basicSpell.cooldownInSeconds,
+            //         basicSpell.ManaCost + 50,
+            //         new InventoryItem(
+            //             basicSpell.inventoryImage,
+            //             "> 50 mana")), 
+            //     2);
             controller = new MageController();
             controller.MageActions.CastSpell.performed += context =>
             {
