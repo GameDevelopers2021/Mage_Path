@@ -22,9 +22,9 @@ namespace Units.UnitsClasses
             items = new IInventoryItem[inventorySize.x, inventorySize.y];
         }
 
-        public List<IInventoryItem> GetActivated() => GetAll().Where(item => item.IsActivate).ToList();
+        public List<IInventoryItem> GetAllActivated() => GetAll().Where(item => item?.IsActivate ?? false).ToList();
 
-        public bool TryPut(IInventoryItem item)
+        public bool TryPutClone(IInventoryItem item)
         {
             if (items[pointer.x, pointer.y] != null)
             {
@@ -33,12 +33,6 @@ namespace Units.UnitsClasses
 
             items[pointer.x, pointer.y] = (IInventoryItem)item.Clone();
             MovePointerToNextPosition();
-            // for (var i = 0; i < inventorySize.x; i++)
-            // for (var j = 0; j < inventorySize.y; j++)
-            // {
-            //     Debug.Log($"{i} {j} {items[i, j]}");
-            // }
-            // Debug.Log($"============>{pointer}");
             return true;
         }
 

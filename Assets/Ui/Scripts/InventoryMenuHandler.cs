@@ -1,4 +1,7 @@
-﻿using Units.UnitsClasses;
+﻿using Items;
+using MageClasses;
+using SpellBuilderWithRune;
+using Units.UnitsClasses;
 using UnityEngine;
 using Utilities;
 
@@ -6,36 +9,75 @@ namespace Ui.Scripts
 {
     public class InventoryMenuHandler : CellsMenuHandlerBase
     {
-        private Transform craftCell;
-
+        private readonly SpellBuilder spellBuilder = new SpellBuilder();
+        
         [SerializeField] private InventoryComponent inventoryComponent;
+        [SerializeField] private Book book;
+        [SerializeField] private BookMenuHandler bookMenuHandler;
+        private CraftArea craftArea;
+        private ISpell craftedSpell;
 
         private void Awake()
         {
-            inventoryComponent = GameObject.FindWithTag("Player").GetComponent<InventoryComponent>();
+            if (inventoryComponent == null || book == null)
+            { 
+                var player = GameObject.FindWithTag("Player");
+                inventoryComponent = player.GetComponent<InventoryComponent>(); 
+                book = player.GetComponent<Book>();
+            }
 
             var inventoryPanelTransform = transform.GetChild(0).transform;
             UnityHelper.InvokeForEveryChild(inventoryPanelTransform, child =>
             {
                 if (child.CompareTag("ItemCell"))
                 {
-                    ItemsCells.Add(new ItemCell(child));
+                    InitInventoryItemCell(child);
                 }
             });
 
-            var craftPanelTransform = transform.GetChild(1).transform;
-            UnityHelper.InvokeForEveryChild(craftPanelTransform, child =>
+            craftArea = new CraftArea(transform.GetChild(1).transform);
+            craftArea.CraftButton.onClick.AddListener(() =>
             {
-                if (child.CompareTag("CraftCell"))
-                {
-                    craftCell = child;
-                }
+                if (craftedSpell == null)
+                    return;
+                book.WriteSpell(craftedSpell, book.SpellIndexer);
+                craftedSpell = null;
+                craftArea.ResultCell.InitWithInventoryItem(InventoryItem.DefaultItem);
+                bookMenuHandler.UpdateCells();
             });
         }
 
         private void OnEnable()
         {
             UpdateCells(inventoryComponent.GetAll());
+        }
+
+        private void InitInventoryItemCell(Transform cellTransform)
+        {
+            var itemCell = new ItemCell(cellTransform);
+            itemCell.ActivateButton.onClick.AddListener(() =>
+            {
+                Debug.Log("Activate click");
+                
+                var inventoryItem = itemCell.Item;
+                
+                if (inventoryItem == null)
+                    return;
+                if (!inventoryItem.IsActivate)
+                {
+                    inventoryItem.Activate();
+                }
+                else
+                {
+                    inventoryItem.Deactivate();
+                }
+                
+                itemCell.StateMarker.SetActive(inventoryItem.IsActivate);
+                
+                craftedSpell = spellBuilder.CreateSpell(inventoryComponent.GetAllActivated());
+                craftArea.ResultCell.InitWithInventoryItem(craftedSpell.InventoryItem);
+            });
+            ItemsCells.Add(itemCell);
         }
     }
 }

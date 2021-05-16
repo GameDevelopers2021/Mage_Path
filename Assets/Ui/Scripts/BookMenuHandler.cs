@@ -1,7 +1,5 @@
-using System;
 using InputSystem;
 using MageClasses;
-using UnitsClasses;
 using UnityEngine;
 using Utilities;
 
@@ -11,6 +9,11 @@ namespace Ui.Scripts
     {
         private UiController controller;
         private Book bookComponent;
+
+        public void UpdateCells()
+        {
+            UpdateCells(bookComponent.GetSpellsAsInventoryItems());
+        }
 
         private void Awake()
         {

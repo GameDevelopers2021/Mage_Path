@@ -19,6 +19,7 @@ namespace MageClasses
         public IEffect[] Effects => _effects;
         public float Cooldown => _cooldown;
         public float ManaCost => _manaCost;
+        public IInventoryItem InventoryItem { get; }
         
         public List<IMagic> Cast(Transform casterTransform, GameObject caster)
         {
@@ -29,13 +30,14 @@ namespace MageClasses
         }
 
         public Spell(string name, Func<Transform, GameObject, List<IMagic>> cast,
-            IEffect[] effects, float cooldown, float manacost)
+            IEffect[] effects, float cooldown, float manacost, IInventoryItem inventoryItem)
         {
             _name = name;
             _cast = cast;
             _cooldown = cooldown;
             _manaCost = manacost;
             _effects = effects;
+            InventoryItem = inventoryItem;
         }
     }
 }

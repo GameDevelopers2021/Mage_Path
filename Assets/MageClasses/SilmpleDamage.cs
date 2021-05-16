@@ -20,6 +20,8 @@ namespace ItemsInterfaces
         public void ApplyEffect(GameObject unit)
         {
             var health = unit.GetComponent<HealthSystem>();
+            if (health == null)
+                return;
             health.TakeDamage(Damage, Element);
         }
     }

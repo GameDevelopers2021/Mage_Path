@@ -1,3 +1,4 @@
+using System;
 using ItemsInterfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,25 +34,14 @@ namespace Ui.Scripts
                         break;
                     case "ActivateButton":
                         ActivateButton = childTransform.GetComponent<Button>();
-                        ActivateButton.onClick.AddListener(() =>
-                        {
-                            Debug.Log("Activate click");
-                            if (Item == null)
-                                return;
-                            if (!Item.IsActivate)
-                            {
-                                Item.Activate();
-                            }
-                            else
-                            {
-                                Item.Deactivate();
-                            }
-
-                            StateMarker.SetActive(Item.IsActivate);
-                        });
                         break;
                 }
             });
+
+            if (StateMarker == null || CellImage == null || Name == null || ActivateButton == null)
+            {
+                throw new ArgumentException("There is no some child components in cell object");
+            }
         }
 
         public ItemCell(Transform cellObjectTransform, IInventoryItem item)

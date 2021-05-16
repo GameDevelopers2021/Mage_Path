@@ -16,6 +16,9 @@ namespace MageClasses
         public IEffect[] Effects { get; }
         public float Cooldown => cooldownInSeconds;
         public float ManaCost => 10f;
+        public IInventoryItem InventoryItem { get; }
+        public Sprite inventoryImage;
+        public string inventoryName;
 
         public List<IMagic> Cast(Transform playersTransform, GameObject unit)
         {
@@ -27,7 +30,7 @@ namespace MageClasses
                 new[] {5f},
                 new []
                 {
-                    new SilmpleDamage("damage",50, MagicElement.Force)
+                    new SilmpleDamage("damage", 50, MagicElement.Force)
                 },
                 newMagic
                 );

@@ -1170,6 +1170,8 @@ MonoBehaviour:
   speed: 700
   cooldownInSeconds: 0.2
   MagicPartical: {fileID: 577376044}
+  inventoryImage: {fileID: 21300000, guid: c1090a4f4c4b0b84f93da3dbd87b8d67, type: 3}
+  inventoryName: Basic Spell
 --- !u!4 &1343000470
 Transform:
   m_ObjectHideFlags: 0
@@ -1282,6 +1284,17 @@ Tilemap:
   m_CorrespondingSourceObject: {fileID: 4572039166124524728, guid: 8aff8ccfd6a5e47428378f98b74792f4, type: 3}
   m_PrefabInstance: {fileID: 4572039165457499140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1751561765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 277097566, guid: 4b2816ead9b98e641b2ba92f86f035fa, type: 3}
+  m_PrefabInstance: {fileID: 2615079430184195097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2f41055ed06fe499af6e1623a86a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1790170969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1459,17 +1472,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 635887893822222705, guid: ac66d9d02edf20045b34e99f92d57985, type: 3}
   m_PrefabInstance: {fileID: 635887895077304238}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2066941664 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2066941664, guid: ac66d9d02edf20045b34e99f92d57985, type: 3}
-  m_PrefabInstance: {fileID: 635887895077304238}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066941663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad296fdcb8cd4b159ad04c411bb6154f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2067851890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1782,13 +1784,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1740645190, guid: 130d752a364ddff489a67974935dfa43, type: 3}
-      propertyPath: inventoryComponent
+      propertyPath: bookMenuHandler
       value: 
-      objectReference: {fileID: 2066941664}
-    - target: {fileID: 1000169437648791945, guid: 130d752a364ddff489a67974935dfa43, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1751561765}
     - target: {fileID: 2940623875041309688, guid: 130d752a364ddff489a67974935dfa43, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1877,13 +1875,13 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 4666428868572746248, guid: 130d752a364ddff489a67974935dfa43, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7384524118853043216, guid: 130d752a364ddff489a67974935dfa43, type: 3}
       propertyPath: m_Name
       value: InventoryMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384524118853043216, guid: 130d752a364ddff489a67974935dfa43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 130d752a364ddff489a67974935dfa43, type: 3}
@@ -2058,7 +2056,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5855399306190142824, guid: fb6bce7f238f43c4fa03c0db9ceb7f8f, type: 3}
       propertyPath: m_Name
-      value: UiHandlersSystem
+      value: UiMenuHandlersSystem
       objectReference: {fileID: 0}
     - target: {fileID: 5855399306190142826, guid: fb6bce7f238f43c4fa03c0db9ceb7f8f, type: 3}
       propertyPath: bookMenu

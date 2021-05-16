@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Items
 {
-    public class SimpleItemObject : MonoBehaviour, IItemObject
+    public class ItemObject : MonoBehaviour, IItemObject
     {
         public string Name => "Simple Item";
         public IInventoryItem InventoryItem { get; set; }
@@ -13,7 +13,7 @@ namespace Items
 
         public void UseBy(GameObject unit)
         {
-            if (unit.GetComponent<InventoryComponent>().TryPut(InventoryItem))
+            if (unit.GetComponent<InventoryComponent>().TryPutClone(InventoryItem))
             {
                 Destroy(gameObject);
             }
@@ -29,7 +29,7 @@ namespace Items
 
         protected void Awake()
         {
-            InventoryItem = new SimpleInventoryItem(inventorySprite);
+            InventoryItem = new InventoryItem(inventorySprite);
         }
     }
 }

@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 namespace Items
 {
-    public class SimpleInventoryItem : IInventoryItem
+    public class InventoryItem : IInventoryItem
     {
+        public static readonly InventoryItem DefaultItem = new InventoryItem(null, "Empty");
+        
         private string name = "Simple item";
         public string Name
         {
@@ -14,21 +16,21 @@ namespace Items
         }
 
         public Sprite ItemSprite { get; set; }
-        public bool IsActivate => state;
+        public bool IsActivate => State;
 
-        private bool state;
+        protected bool State;
 
-        public SimpleInventoryItem(Image image)
+        public InventoryItem(Image image)
         {
             ItemSprite = image.sprite;
         }
 
-        public SimpleInventoryItem(Sprite sprite)
+        public InventoryItem(Sprite sprite)
         {
             ItemSprite = sprite;
         }
         
-        public SimpleInventoryItem(Sprite sprite, string name)
+        public InventoryItem(Sprite sprite, string name)
         {
             ItemSprite = sprite;
             Name = name;
@@ -36,17 +38,17 @@ namespace Items
 
         public object Clone()
         {
-            return new SimpleInventoryItem(ItemSprite, name);
+            return new InventoryItem(ItemSprite, name);
         }
 
-        public void Activate()
+        public virtual void Activate()
         {
-            state = true;
+            State = true;
         }
 
-        public void Deactivate()
+        public virtual void Deactivate()
         {
-            state = false;
+            State = false;
         }
     }
 }

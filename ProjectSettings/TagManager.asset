@@ -13,6 +13,7 @@ TagManager:
   - ItemImage
   - ActivateButton
   - ItemName
+  - CraftButton
   layers:
   - Default
   - TransparentFX

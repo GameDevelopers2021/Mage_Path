@@ -1,12 +1,11 @@
 ﻿using CommonInterfaces;
+using Items;
 using UnityEngine;
 
 namespace ItemsInterfaces
 {
-    public interface IItemObject : INamed
+    public interface IItemObject : INamed, IStored
     {
-        IInventoryItem InventoryItem { get; set; }
-        
         void UseBy(GameObject unit);
     }
 }

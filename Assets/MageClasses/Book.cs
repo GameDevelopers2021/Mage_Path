@@ -47,11 +47,13 @@ namespace MageClasses
 
         public void SpellIndexerUp()
         {
+            DeactivateCurrentSpellInMenu();
             _splellInd = (_splellInd + 1) % _spells.Length;
         }
         
         public void SpellIndexerDown()
         {
+            DeactivateCurrentSpellInMenu();
             _splellInd = (_splellInd + _spells.Length - 1) % _spells.Length;
         }
 
@@ -101,7 +103,7 @@ namespace MageClasses
         
         public void Use(IUnit usingUnit) // TODO Add to inventory
         {
-            throw new System.NotImplementedException(); 
+            throw new NotImplementedException(); 
         }
 
         public List<IInventoryItem> GetSpellsAsInventoryItems()
@@ -111,7 +113,10 @@ namespace MageClasses
                 .Select(spell =>
                 {
                     k++;
-                    var inventoryItem = (IInventoryItem) new SimpleInventoryItem(null, "Spell");
+                    var inventoryItem = (IInventoryItem) InventoryItem.DefaultItem.Clone();
+                    if (spell != null)
+                        inventoryItem = spell.InventoryItem;
+                    
                     if (k == SpellIndexer)
                         inventoryItem.Activate();
                     return inventoryItem;
@@ -119,9 +124,11 @@ namespace MageClasses
                 .ToList();
         }
 
-        // private void Awake()
-        // {
-        //     SetSize(3);
-        // }
+        private void DeactivateCurrentSpellInMenu()
+        {
+            var spell = _spells[_splellInd];
+            if (spell != null)
+                _spells[_splellInd].InventoryItem.Deactivate();
+        }
     }
 }

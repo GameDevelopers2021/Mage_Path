@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using CommonInterfaces;
+using Items;
 using ItemsInterfaces;
 using UnityEngine;
 
 namespace MageClasses
 {
-    public interface ISpell : INamed
+    public interface ISpell : INamed, IStored
     {
         IEffect[] Effects { get; }
         float Cooldown { get; }
