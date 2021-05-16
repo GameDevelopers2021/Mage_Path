@@ -10,12 +10,13 @@ namespace Ui.Scripts
     public class ItemCell
     {
         public readonly Transform CellObjectTransform;
-        
+
         public IInventoryItem Item { get; private set; }
         public GameObject StateMarker { get; private set; }
         public Image CellImage { get; private set; }
         public Text Name { get; private set; }
         public Button ActivateButton { get; private set; }
+        public bool IsEmpty { get; private set; }
 
         public ItemCell(Transform cellObjectTransform)
         {
@@ -56,7 +57,14 @@ namespace Ui.Scripts
         {
             Item = item;
             if (item == null)
+            {
                 Item = InventoryItem.DefaultItem;
+                IsEmpty = true;
+            }
+            else
+            {
+                IsEmpty = false;
+            }
             
             Name.text = Item.Name;
             CellImage.sprite = Item.ItemSprite;

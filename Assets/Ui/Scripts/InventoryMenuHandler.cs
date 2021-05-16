@@ -72,7 +72,7 @@ namespace Ui.Scripts
                 
                 var inventoryItem = itemCell.Item;
                 
-                if (inventoryItem == null)
+                if (itemCell.IsEmpty)
                     return;
                 if (!inventoryItem.IsActivate)
                 {
@@ -84,8 +84,14 @@ namespace Ui.Scripts
                 }
                 
                 itemCell.StateMarker.SetActive(inventoryItem.IsActivate);
-                
-                craftedSpell = spellBuilder.CreateSpell(inventoryComponent.GetAllActivated());
+                var activatedItems = inventoryComponent.GetAllActivated();
+                if (activatedItems.Count == 0)
+                {
+                    craftedSpell = null;
+                    craftArea.ResultCell.InitWithInventoryItem(InventoryItem.DefaultItem);
+                    return;
+                }
+                craftedSpell = spellBuilder.CreateSpell(activatedItems);
                 craftArea.ResultCell.InitWithInventoryItem(craftedSpell.InventoryItem);
             });
             ItemsCells.Add(itemCell);

@@ -19,6 +19,14 @@ namespace SpellBuilderWithRune
         {
             if (items == null)
                 throw new ArgumentNullException();
+            
+            // if (items.Count == 0)
+            //     return new Spell(
+            //         "", (transform1, o) => null, 
+            //         new IEffect[]{}, 
+            //         0.1f, 
+            //         10f, 
+            //         InventoryItem.DefaultItem);
 
             var types = GetItemsTypes(items);
             if (types.Contains(ObjectType.Rune) && types.Contains(ObjectType.RuneOfBigSize))
