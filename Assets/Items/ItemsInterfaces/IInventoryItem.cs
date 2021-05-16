@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ItemsInterfaces
 {
-    public interface IInventoryItem : INamed, ICloneable
+    public interface IInventoryItem : INamed, ICloneable, IIdentified
     {
         Sprite ItemSprite { get; set; }
         bool IsActivate { get; }

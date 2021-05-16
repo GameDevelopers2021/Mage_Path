@@ -17,6 +17,11 @@ namespace Ui.Scripts
         private CraftArea craftArea;
         private ISpell craftedSpell;
 
+        public void UpdateCells()
+        {
+            UpdateCells(inventoryComponent.GetAll());
+        }
+        
         private void Awake()
         {
             if (inventoryComponent == null || book == null)
@@ -40,16 +45,18 @@ namespace Ui.Scripts
             {
                 if (craftedSpell == null)
                     return;
+                inventoryComponent.RemoveAllActivated();
                 book.WriteSpell(craftedSpell, book.SpellIndexer);
                 craftedSpell = null;
                 craftArea.ResultCell.InitWithInventoryItem(InventoryItem.DefaultItem);
                 bookMenuHandler.UpdateCells();
+                UpdateCells();
             });
         }
 
         private void OnEnable()
         {
-            UpdateCells(inventoryComponent.GetAll());
+            UpdateCells();
         }
 
         private void InitInventoryItemCell(Transform cellTransform)

@@ -1,14 +1,16 @@
-﻿using ItemsInterfaces;
+﻿using CommonInterfaces;
+using ItemsInterfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Items
 {
     public class InventoryItem : IInventoryItem
     {
-        public static readonly InventoryItem DefaultItem = new InventoryItem(null, "Empty");
-        
-        private string name = "Simple item";
+        public static readonly InventoryItem DefaultItem = new InventoryItem(null);
+
+        private string name = "NullObject";
         public string Name
         {
             get => name;
@@ -17,24 +19,24 @@ namespace Items
 
         public Sprite ItemSprite { get; set; }
         public bool IsActivate => State;
+        public ObjectType Identifier { get; }
 
         protected bool State;
 
-        public InventoryItem(Image image)
-        {
-            ItemSprite = image.sprite;
-        }
-
-        public InventoryItem(Sprite sprite)
-        {
-            ItemSprite = sprite;
-        }
-        
-        public InventoryItem(Sprite sprite, string name)
+        public InventoryItem(Sprite sprite, string name = "Null")
         {
             ItemSprite = sprite;
             Name = name;
+            ObjectTypeHelper.TryIdentifyObjectType(name, out var id);
+            Identifier = id;
         }
+        
+        public InventoryItem(Sprite sprite, string name, ObjectType type)
+        {
+            ItemSprite = sprite;
+            Name = name;
+            Identifier = type;
+        } 
 
         public object Clone()
         {

@@ -1,4 +1,5 @@
 using System;
+using Items;
 using ItemsInterfaces;
 using UnityEngine;
 using UnityEngine.UI;
@@ -54,9 +55,12 @@ namespace Ui.Scripts
         public void InitWithInventoryItem(IInventoryItem item)
         {
             Item = item;
-            Name.text = item?.Name ?? "Empty";
-            CellImage.sprite = item?.ItemSprite;
-            StateMarker.SetActive(item?.IsActivate ?? false);
+            if (item == null)
+                Item = InventoryItem.DefaultItem;
+            
+            Name.text = Item.Name;
+            CellImage.sprite = Item.ItemSprite;
+            StateMarker.SetActive(Item.IsActivate);
         }
     }
 }

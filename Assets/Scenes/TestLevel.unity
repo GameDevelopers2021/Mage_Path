@@ -1048,6 +1048,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 371473345089411042, guid: 6e74b3eab2e35fd4084989a39673fab3, type: 3}
+      propertyPath: inventoryItemName
+      value: name
+      objectReference: {fileID: 0}
     - target: {fileID: 8042291469323388503, guid: 6e74b3eab2e35fd4084989a39673fab3, type: 3}
       propertyPath: m_Name
       value: SimpleItem (1)
@@ -2403,6 +2407,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 371473345089411042, guid: 6e74b3eab2e35fd4084989a39673fab3, type: 3}
+      propertyPath: inventoryItemName
+      value: name
+      objectReference: {fileID: 0}
     - target: {fileID: 8042291469323388497, guid: 6e74b3eab2e35fd4084989a39673fab3, type: 3}
       propertyPath: m_RootOrder
       value: 17

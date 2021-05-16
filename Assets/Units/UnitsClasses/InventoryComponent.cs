@@ -50,7 +50,7 @@ namespace Units.UnitsClasses
             for (var i = 0; i < inventorySize.x; i++)
             for (var j = 0; j < inventorySize.y; j++)
             {
-                result.Add((IInventoryItem)items[i, j]?.Clone());
+                result.Add(items[i, j]);
             }
 
             return result;
@@ -66,6 +66,19 @@ namespace Units.UnitsClasses
             return item;
         }
 
+        public void RemoveAllActivated()
+        {
+            for (var i = 0; i < inventorySize.x; i++)
+            for (var j = 0; j < inventorySize.y; j++)
+            {
+                var item = items[i, j];
+                if (item == null)
+                    continue;
+
+                items[i, j] = items[i, j].IsActivate ? null : item;
+            }
+        }
+        
         public void Remove(Vector2Int position)
         {
             AssertPosition(position);

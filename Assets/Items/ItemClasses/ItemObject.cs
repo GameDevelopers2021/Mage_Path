@@ -1,15 +1,20 @@
-﻿using ItemsInterfaces;
+﻿using CommonInterfaces;
+using ItemsInterfaces;
 using Units.UnitsClasses;
 using UnityEngine;
+using Utilities;
 
 namespace Items
 {
     public class ItemObject : MonoBehaviour, IItemObject
     {
-        public string Name => "Simple Item";
-        public IInventoryItem InventoryItem { get; set; }
-        
         [SerializeField] private Sprite inventorySprite;
+        [SerializeField] private string itemName = "SimpleItem";
+        [SerializeField] private string inventoryItemName;
+
+        public string Name => itemName;
+        public IInventoryItem InventoryItem { get; set; }
+        public ObjectType Identifier { get; private set; }
 
         public void UseBy(GameObject unit)
         {
@@ -29,7 +34,12 @@ namespace Items
 
         protected void Awake()
         {
-            InventoryItem = new InventoryItem(inventorySprite);
+            InventoryItem = inventoryItemName == null
+                ? new InventoryItem(inventorySprite, Name)
+                : new InventoryItem(inventorySprite, inventoryItemName);
+
+            ObjectTypeHelper.TryIdentifyObjectType(Name, out var identifier);
+            Identifier = identifier;
         }
     }
 }
