@@ -9,8 +9,7 @@ namespace Ui.Scripts
 {
     public class InventoryMenuHandler : CellsMenuHandlerBase
     {
-        private readonly SpellBuilder spellBuilder = new SpellBuilder();
-        
+        [SerializeField] private SpellBuilder spellBuilder;
         [SerializeField] private InventoryComponent inventoryComponent;
         [SerializeField] private Book book;
         [SerializeField] private BookMenuHandler bookMenuHandler;

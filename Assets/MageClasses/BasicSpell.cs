@@ -10,12 +10,14 @@ namespace MageClasses
     {
         public float speed = 0.1f; 
         public float cooldownInSeconds = 1.5f;
+        [SerializeField] private int simpleDamagePower = 10;
+        [SerializeField] private float manaCost = 10f;
         [SerializeField] GameObject MagicPartical;
         public string Name { get; }
 
         public IEffect[] Effects { get; }
         public float Cooldown => cooldownInSeconds;
-        public float ManaCost => 10f;
+        public float ManaCost => manaCost;
         public IInventoryItem InventoryItem { get; }
         public Sprite inventoryImage;
         public string inventoryName;
@@ -30,7 +32,7 @@ namespace MageClasses
                 new[] {5f},
                 new []
                 {
-                    new SilmpleDamage("damage", 50, MagicElement.Force)
+                    new SilmpleDamage("damage", simpleDamagePower, MagicElement.Force)
                 },
                 newMagic
                 );

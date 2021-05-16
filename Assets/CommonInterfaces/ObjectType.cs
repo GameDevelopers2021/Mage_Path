@@ -4,6 +4,7 @@
     {
         Rune,
         RuneOfMoving,
+        RuneOfBigSize,
         SimpleObject,
         Null
     }
