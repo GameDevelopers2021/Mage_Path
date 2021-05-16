@@ -23,9 +23,10 @@ namespace Utilities
                 });
         }
 
-        public static bool TryIdentifyObjectType(string objectName, out ObjectType type)
+        public static bool TryIdentifyObjectType(string objectName, out ObjectType type, string separator = "")
         {
-            var typeName = TypesNames.FirstOrDefault(name => objectName.IndexOf(name, StringComparison.Ordinal) != -1);
+            var typeName = TypesNames.FirstOrDefault(name => 
+                objectName.IndexOf(name + separator, StringComparison.Ordinal) != -1);
             
             type = ObjectType.Null;
             

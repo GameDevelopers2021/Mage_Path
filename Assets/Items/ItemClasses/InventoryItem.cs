@@ -1,7 +1,6 @@
 ﻿using CommonInterfaces;
 using ItemsInterfaces;
 using UnityEngine;
-using UnityEngine.UI;
 using Utilities;
 
 namespace Items

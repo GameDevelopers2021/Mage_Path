@@ -9,6 +9,8 @@ namespace Items
     public class ItemObject : MonoBehaviour, IItemObject
     {
         [SerializeField] private Sprite inventorySprite;
+        [SerializeField] private ObjectType type = ObjectType.Null;
+        // [SerializeField] private string typeName = "SimpleObject";
         [SerializeField] private string itemName = "SimpleItem";
         [SerializeField] private string inventoryItemName;
 
@@ -34,12 +36,13 @@ namespace Items
 
         protected void Awake()
         {
-            InventoryItem = inventoryItemName == null
-                ? new InventoryItem(inventorySprite, Name)
-                : new InventoryItem(inventorySprite, inventoryItemName);
+            //ObjectTypeHelper.TryIdentifyObjectType(typeName, out var identifier);
+            Identifier = type;
 
-            ObjectTypeHelper.TryIdentifyObjectType(Name, out var identifier);
-            Identifier = identifier;
+            InventoryItem = new InventoryItem(
+                inventorySprite,
+                inventoryItemName == "" ? Name : inventoryItemName,
+                Identifier);
         }
     }
 }

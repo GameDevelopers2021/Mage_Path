@@ -19,6 +19,11 @@ namespace Ui.Scripts
 
         public void UpdateCells()
         {
+            var all = inventoryComponent.GetAll();
+            foreach (var t in all)
+            {
+                Debug.Log(t?.Identifier);
+            }
             UpdateCells(inventoryComponent.GetAll());
         }
         

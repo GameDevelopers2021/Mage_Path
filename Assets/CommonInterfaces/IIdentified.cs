@@ -6,12 +6,4 @@ namespace CommonInterfaces
     {
         ObjectType Identifier { get; }
     }
-
-    public enum ObjectType
-    {
-        Rune,
-        RuneOfMoving,
-        SimpleObject,
-        Null
-    }
 }

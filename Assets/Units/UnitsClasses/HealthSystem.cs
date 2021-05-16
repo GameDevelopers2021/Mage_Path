@@ -36,7 +36,7 @@ namespace UnitsClasses
 
                     Destroy(gameObject);
 
-                    if (gameOverSceneName != null)
+                    if (gameOverSceneName != "")
                         SceneManager.LoadScene(gameOverSceneName);
                 }
             }

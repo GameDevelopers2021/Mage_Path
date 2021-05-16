@@ -77,6 +77,8 @@ namespace Units.UnitsClasses
 
                 items[i, j] = items[i, j].IsActivate ? null : item;
             }
+
+            MovePointerToFirstEmptyPosition();
         }
         
         public void Remove(Vector2Int position)
@@ -100,17 +102,31 @@ namespace Units.UnitsClasses
 
         private void MovePointerToNextPosition()
         {
-            if (pointer.y + 1 >= inventorySize.y)
+            // if (pointer.y + 1 >= inventorySize.y)
+            // {
+            //     if (pointer.x + 1 >= inventorySize.x) 
+            //         return;
+            //     
+            //     pointer.y = 0;
+            //     pointer.x++;
+            //     return;
+            // }
+            //
+            // pointer.y++;
+            MovePointerToFirstEmptyPosition();
+        }
+
+        private void MovePointerToFirstEmptyPosition()
+        {
+            for (var i = 0; i < inventorySize.x; i++)
+            for (var j = 0; j < inventorySize.y; j++)
             {
-                if (pointer.x + 1 >= inventorySize.x) 
-                    return;
-                
-                pointer.y = 0;
-                pointer.x++;
+                if (items[i, j] != null)
+                    continue;
+
+                pointer = new Vector2Int(i, j);
                 return;
             }
-
-            pointer.y++;
         }
 
         private void Start()
