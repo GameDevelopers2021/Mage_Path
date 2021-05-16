@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CommonInterfaces;
 using Items;
 using ItemsInterfaces;
 using MageClasses;

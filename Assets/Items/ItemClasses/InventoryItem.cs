@@ -39,7 +39,7 @@ namespace Items
 
         public object Clone()
         {
-            return new InventoryItem(ItemSprite, name);
+            return new InventoryItem(ItemSprite, name, Identifier);
         }
 
         public virtual void Activate()

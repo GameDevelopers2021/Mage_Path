@@ -2,7 +2,6 @@
 using ItemsInterfaces;
 using Units.UnitsClasses;
 using UnityEngine;
-using Utilities;
 
 namespace Items
 {
@@ -10,7 +9,6 @@ namespace Items
     {
         [SerializeField] private Sprite inventorySprite;
         [SerializeField] private ObjectType type = ObjectType.Null;
-        // [SerializeField] private string typeName = "SimpleObject";
         [SerializeField] private string itemName = "SimpleItem";
         [SerializeField] private string inventoryItemName;
 
@@ -36,7 +34,6 @@ namespace Items
 
         protected void Awake()
         {
-            //ObjectTypeHelper.TryIdentifyObjectType(typeName, out var identifier);
             Identifier = type;
 
             InventoryItem = new InventoryItem(
