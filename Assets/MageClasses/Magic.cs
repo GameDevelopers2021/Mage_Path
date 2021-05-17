@@ -9,7 +9,8 @@ namespace MageClasses
         private int _controlInd;
         private float _usedTime;
         private GameObject _controled;
-        public Action<GameObject, float>[] Control { get; }
+        private Rigidbody2D _rigidbody2D;
+        public Action<GameObject, Rigidbody2D, float>[] Control { get; }
         public float[] ControlTime { get; }
         public IEffect[] Effects { get; }
         public bool IsSelfFire { get; }
@@ -25,7 +26,7 @@ namespace MageClasses
             }
             if (_controlInd < Control.Length)
             {
-                Control[_controlInd](_controled, deltaTime - _usedTime);
+                Control[_controlInd](_controled, _rigidbody2D, deltaTime - _usedTime);
             }
             else
             {
@@ -44,7 +45,7 @@ namespace MageClasses
         }
 
         public Magic(
-            Action<GameObject, float>[] control, 
+            Action<GameObject, Rigidbody2D, float>[] control, 
             float[] controlTime,
             IEffect[] effects,
             GameObject controled,
@@ -59,6 +60,7 @@ namespace MageClasses
             _controlInd = 0;
             _usedTime = 0;
             _controled = controled;
+            _rigidbody2D = controled.GetComponent<Rigidbody2D>();
         }
     }
 }

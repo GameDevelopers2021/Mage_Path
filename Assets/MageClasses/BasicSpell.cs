@@ -28,7 +28,7 @@ namespace MageClasses
             newMagic.transform.rotation = playersTransform.rotation;
             newMagic.transform.position = playersTransform.position;
             var magicScript = new Magic(
-                new[] {(Action<GameObject, float>) MoveForward},
+                new[] {(Action<GameObject, Rigidbody2D, float>) MoveForward},
                 new[] {5f},
                 new []
                 {
@@ -42,9 +42,8 @@ namespace MageClasses
             return new List<IMagic> {magicScript};
         }
 
-        public void MoveForward(GameObject obj, float time)
+        public void MoveForward(GameObject obj, Rigidbody2D rig, float time)
         {
-            var rig = obj.GetComponent<Rigidbody2D>();
             var angle = rig.rotation / 180 * math.PI;
             rig.velocity = new Vector2(speed * math.cos(angle), speed * math.sin(angle)) * Time.fixedDeltaTime;
         }

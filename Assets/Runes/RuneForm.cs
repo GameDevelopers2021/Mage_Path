@@ -7,6 +7,6 @@ namespace Runes
     {
         public RuneType Type => RuneType.Form;
         
-        public Transform Form;
+        [SerializeField] public Transform Form;
     }
 }
