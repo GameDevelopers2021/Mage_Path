@@ -4,7 +4,12 @@
     {
         Rune,
         RuneOfMoving,
+        RuneOfMovingForward,
+        RuneOfCircle,
+        RuneOfOne,
+        RuneOfTwoParallel,
         RuneOfBigSize,
+        RuneOfTunel,
         SimpleObject,
         Null
     }

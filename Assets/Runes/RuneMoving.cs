@@ -1,14 +1,17 @@
 using System;
+using Spells;
 using UnityEngine;
 
 namespace Runes
 {
-    public class RuneMoving: Rune
+    public abstract class RuneMoving: Rune
     {
-        public RuneType Type => RuneType.Moving;
+        public override void Use(SpellDetail spell)
+        {
+            spell.Moves.Add(Did(spell));
+            spell.ParameterAdd[FloatMagicParameter.ManaCost] += 5f;
+        }
 
-        [SerializeField]
-        public Action<GameObject, Rigidbody2D, float> Did(float speed) => 
-            (transform1, o, t) => { };
+        protected abstract Action<GameObject, Rigidbody2D, float> Did(SpellDetail spell);
     }
 }

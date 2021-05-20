@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2759287754499922111}
   - component: {fileID: 2759287754499922083}
   m_Layer: 0
-  m_Name: Basic Magic Partical
+  m_Name: Circle
   m_TagString: Magic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2759287754499922110}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -65.1, y: 9.2, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.9622642, g: 0.5942238, b: 0, a: 1}
+  m_Color: {r: 0.4117647, g: 0.22030382, b: 0.027450979, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

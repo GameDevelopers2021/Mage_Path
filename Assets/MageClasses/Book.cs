@@ -76,13 +76,13 @@ namespace MageClasses
             {
                 throw new IndexOutOfRangeException();
             }
-            if (_spells[spellIndex] == null)
-            {
+            /*if (_spells[spellIndex] == null)
+            {*/
                 _spells[spellIndex] = spell;
                 _cooldowns[spellIndex] = spell.Cooldown;
                 _lastUseSpells[spellIndex] = -spell.Cooldown;
                 return true;
-            }
+            //}
             return false;
         }
 

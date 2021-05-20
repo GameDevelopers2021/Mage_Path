@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using ItemsInterfaces;
+using Runes;
+using Spells;
 using UnitsClasses;
 using UnityEngine;
 using Unity.Mathematics;
@@ -20,6 +22,7 @@ namespace MageClasses
         public float Cooldown => _cooldown;
         public float ManaCost => _manaCost;
         public IInventoryItem InventoryItem { get; }
+        public SpellDetail Detail;
         
         public List<IMagic> Cast(Transform casterTransform, GameObject caster)
         {
@@ -38,6 +41,16 @@ namespace MageClasses
             _manaCost = manacost;
             _effects = effects;
             InventoryItem = inventoryItem;
+        }
+
+        public Spell(SpellDetail spellDetail)
+        {
+            Detail = spellDetail;
+            _name = spellDetail.Name;
+            _cast = spellDetail.Cast;
+            _cooldown = spellDetail.GetParameter(FloatMagicParameter.Cooldown);
+            _manaCost = spellDetail.GetParameter(FloatMagicParameter.ManaCost);
+            InventoryItem = spellDetail.InventoryItem;
         }
     }
 }

@@ -1,4 +1,5 @@
 using SpellBuilderWithRune;
+using Spells;
 using UnityEngine;
 
 namespace Runes
@@ -6,7 +7,11 @@ namespace Runes
     public class RuneForm : Rune
     {
         public RuneType Type => RuneType.Form;
-        
-        [SerializeField] public Transform Form;
+        public override void Use(SpellDetail spell)
+        {
+            spell.Forms.Add(Form);
+        }
+
+        [SerializeField] private Transform Form;
     }
 }
