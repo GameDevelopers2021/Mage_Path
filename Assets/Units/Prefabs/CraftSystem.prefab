@@ -43,4 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5fe96d7d445f944a1c0492c1407cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Runes: {fileID: 608292125185484408, guid: bb749a55c77850248a1797cbaaff917e, type: 3}
   spellObject: {fileID: 0}
+  ObjectTypes: 030000000400000005000000020000000600000007000000
+  ElementsColor:
+  - {r: 0.25650424, g: 0.027450979, b: 0.4117647, a: 1}
