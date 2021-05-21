@@ -34,6 +34,7 @@ namespace UnitsClasses
             {
                 Rigidbody.drag = 5f;
             }
+            UnitAnimator.SetBool(IsWalking, isMoving);
         }
 
         private void RotateByMousePosition(Vector2 screenMousePosition)

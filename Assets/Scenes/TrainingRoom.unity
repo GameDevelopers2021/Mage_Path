@@ -633,10 +633,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenuCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7458425321067373046, guid: 4a23785bb7647d14f87aad3586b69fc0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a23785bb7647d14f87aad3586b69fc0, type: 3}
 --- !u!1 &841544231 stripped
@@ -1078,10 +1074,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BookMenuCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2615079429146711637, guid: e9150ea923245ad4daf40fd27fe8d492, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2615079429146711638, guid: e9150ea923245ad4daf40fd27fe8d492, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1279,10 +1271,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryMenuCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7384524118853043216, guid: 449ed6c2034e0174c835bc6def712292, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 449ed6c2034e0174c835bc6def712292, type: 3}
 --- !u!1 &1375495660 stripped
@@ -1388,10 +1376,6 @@ PrefabInstance:
     - target: {fileID: 4847593506767572427, guid: 6c8317e0e47eddc4bba5b29a14b47027, type: 3}
       propertyPath: m_Name
       value: FinishMenuCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4847593506767572427, guid: 6c8317e0e47eddc4bba5b29a14b47027, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c8317e0e47eddc4bba5b29a14b47027, type: 3}

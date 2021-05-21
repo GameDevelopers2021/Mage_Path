@@ -8,6 +8,8 @@ namespace UnitsClasses
     {
         protected Vector2 MovingDirection = Vector2.zero;
         [SerializeField] public float requiredSpeed = 5f;
+
+        protected readonly int IsWalking = Animator.StringToHash("IsWalking");
         //private float currentSpeed;
 
         public float Speed => requiredSpeed;

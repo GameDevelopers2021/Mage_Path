@@ -14,6 +14,7 @@ namespace SpellBuilderWithRune
     {
         private GameObject obj;
         [SerializeField] private BasicSpell spellObject;
+        [SerializeField] private GameObject runesPrefab;
 
         public ISpell CreateSpell(List<IInventoryItem> items)
         {
@@ -55,6 +56,11 @@ namespace SpellBuilderWithRune
         private List<ObjectType> GetItemsTypes(List<IInventoryItem> items)
         {
             return items.Select(item => item.Identifier).ToList();
+        }
+        
+        private void Awake()
+        {
+            
         }
     }
 }
