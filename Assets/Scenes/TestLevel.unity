@@ -298,20 +298,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8693863887635832397, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: pathFindingSystem
       value: 
       objectReference: {fileID: 1798000757}
     - target: {fileID: 1054422801941126510, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1054422801941126510, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5365565439878359026, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: m_RootOrder
@@ -357,10 +349,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5822350310921158457, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 30099435}
     - target: {fileID: 6027339942134059705, guid: aa8c589a35e3e4a4086f632eafcc9930, type: 3}
       propertyPath: itemOnDeath
       value: 
@@ -1450,10 +1438,6 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 1864864498}
-    - target: {fileID: 635887893822222666, guid: ac66d9d02edf20045b34e99f92d57985, type: 3}
-      propertyPath: health
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 635887893822222671, guid: ac66d9d02edf20045b34e99f92d57985, type: 3}
       propertyPath: m_RootOrder
       value: 12
