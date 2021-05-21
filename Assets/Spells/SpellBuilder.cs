@@ -97,7 +97,9 @@ namespace SpellBuilderWithRune
                 {
                     magicsTransf.Add(Instantiate(spell.Forms[0]));
                     magicsTransf.Last().localScale *= spell.GetParameter(FloatMagicParameter.Size);
-                    magicsTransf.Last().position = transf.position + (transf.rotation * spell.Shifts[0][i]);
+                    magicsTransf.Last().position = transf.position + (transf.rotation 
+                                                                      * spell.Shifts[0][i] 
+                                                                      * spell.GetParameter(FloatMagicParameter.Size));
                     magicsTransf.Last().rotation = transf.rotation;
                     magicsTransf.Last().Rotate(0, 0, spell.Directions[0][i]);
                     
