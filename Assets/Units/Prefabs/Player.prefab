@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd696449b3f54b588a56e12fd2015184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 70
   ui: {fileID: 0}
   gameOverSceneName: Scenes/ExitMenu
   itemOnDeath: {fileID: 0}

@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4036770537670049107}
-  - component: {fileID: -5402830059242102383}
   - component: {fileID: 3062244034617383643}
   - component: {fileID: 6457341269530651366}
   - component: {fileID: 1442128220916764254}
   - component: {fileID: 647131353255695004}
+  - component: {fileID: 3875029083653910252}
+  - component: {fileID: 6632972814302897062}
   m_Layer: 0
   m_Name: Runes
   m_TagString: Untagged
@@ -35,20 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5402830059242102383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608292125185484408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f0ada3f1cc49e9b5d43116c2b68812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Force
-  Element: 0
 --- !u!114 &3062244034617383643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,9 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0813c6e02e564a80b859ece1fe3faec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: OneForward
+  Name: One
   Shifts:
-  - {x: 2, y: 0}
+  - {x: 1.1, y: 0}
   Directions:
   - 0
 --- !u!114 &1442128220916764254
@@ -92,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0813c6e02e564a80b859ece1fe3faec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: TwoParalelForward
+  Name: TwoParallel
   Shifts:
   - {x: 1.9696, y: 0.347}
   - {x: 1.9696, y: -0.347}
@@ -112,3 +99,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Forward
+--- !u!114 &3875029083653910252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608292125185484408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b24e6627124113b1c35eed8e905860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Big
+  ParametersAdd: 03000000
+  Add:
+  - 7
+  ParametersMulti: 010000000000000002000000
+  Multi:
+  - 2
+  - 0.4
+  - 1.7
+  Flags: 
+--- !u!114 &6632972814302897062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608292125185484408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b24e6627124113b1c35eed8e905860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tunel
+  ParametersAdd: 0300000004000000
+  Add:
+  - 2
+  - 2
+  ParametersMulti: 
+  Multi: []
+  Flags: 01000000

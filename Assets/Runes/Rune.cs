@@ -1,12 +1,13 @@
 using CommonInterfaces;
 using SpellBuilderWithRune;
+using Spells;
 using UnityEngine;
 
 namespace Runes
 {
-    public class Rune : MonoBehaviour
+    public abstract class Rune : MonoBehaviour
     {
-        public RuneType Type { get; }
         [SerializeField] public string Name;
+        public abstract void Use(SpellDetail spell);
     }
 }

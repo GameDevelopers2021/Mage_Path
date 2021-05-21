@@ -7,5 +7,6 @@ namespace Runes
         Damage,
         ManaCost,
         Time,
+        Cooldown,
     }
 }
