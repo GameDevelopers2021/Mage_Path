@@ -80,7 +80,7 @@ namespace SpellBuilderWithRune
                 //spriteRender.color = ElementsColor[(int) spell.Element];
             }
             spell.InventoryItem = new InventoryItem(
-                spell.Forms[0].GetComponent<Sprite>(),
+                spell.Forms[0].GetComponent<SpriteRenderer>().sprite,
                 spell.Name);
             spell.Effects.Add(new SilmpleDamage(
                 "Damage",
