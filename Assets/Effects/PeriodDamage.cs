@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Threading;
 using MageClasses;
+using Units.UnitsClasses;
 using Unity.Collections;
 using UnityEngine;
 
@@ -29,18 +30,16 @@ namespace ItemsInterfaces
             if(ticCount <= 0)
                 return;
             var damage = new SilmpleDamage(Name, Damage, Element);
-            var enumerator = Wait(Period, ticCount);
-            while (enumerator.MoveNext())
-            {
-                damage.ApplyEffect(unit);
-            }
+            var effects = unit.GetComponent<EffectsSystem>();
+            effects.Coroutine(ApplyEffect(unit, Period, ticCount, damage));
         }
 
-        private IEnumerator Wait(float time, int count)
+        private IEnumerator ApplyEffect(GameObject unit, float time, int count, SilmpleDamage damage)
         {
             for (int i = 0; i < count; i++)
             {
                 yield return new WaitForSeconds(time);
+                damage.ApplyEffect(unit);
             }
         }
     }
