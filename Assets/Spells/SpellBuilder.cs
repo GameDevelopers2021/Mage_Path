@@ -69,6 +69,11 @@ namespace SpellBuilderWithRune
                 spell.Shifts.Add(new[] {Vector2.zero});
                 spell.Directions.Add(new[] {0f});
             }
+
+            if (spell.Moves.Count == 0)
+            {
+                spell.Moves.Add((a, o, f) => { });
+            }
             for (int i = 0; i < spell.Forms.Count; i++)
             {
                 //var spriteRender = spell.Forms[i].GetComponent<SpriteRenderer>();
