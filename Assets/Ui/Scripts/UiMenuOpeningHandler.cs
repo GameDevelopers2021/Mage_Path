@@ -30,6 +30,8 @@ namespace Ui.Scripts
         private void OpenMenu(GameObject menu)
         {
             CloseActiveMenu();
+            if (menu == pauseMenu)
+                Time.timeScale = 0;
             menu.SetActive(true);
             activeMenu = menu;
             playerMageAttack.enabled = false;
@@ -37,6 +39,7 @@ namespace Ui.Scripts
     
         private void CloseActiveMenu()
         {
+            Time.timeScale = 1;
             if (activeMenu == null)
                 return;
         
