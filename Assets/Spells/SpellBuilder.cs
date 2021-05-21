@@ -19,6 +19,7 @@ namespace SpellBuilderWithRune
         private Dictionary<ObjectType, Rune> ObjectTypeToRune = new Dictionary<ObjectType, Rune>();
         [SerializeField] private ObjectType[] ObjectTypes;
         [SerializeField] private Color[] ElementsColor;
+        [SerializeField] private Material[] ElementsMaterial;
 
         public ISpell CreateSpell(List<IInventoryItem> items)
         {
@@ -109,7 +110,8 @@ namespace SpellBuilderWithRune
                     magicsTransf.Last().Rotate(0, 0, spell.Directions[0][i]);
                     
                     var spriteRender = magicsTransf.Last().GetComponent<SpriteRenderer>();
-                    spriteRender.color = ElementsColor[(int) spell.Element];
+                    spriteRender.material = ElementsMaterial[(int) spell.Element];
+                    //spriteRender.color = ElementsColor[(int) spell.Element];
                     
                     magics.Add(new Magic(
                         spell.Moves.ToArray(),
