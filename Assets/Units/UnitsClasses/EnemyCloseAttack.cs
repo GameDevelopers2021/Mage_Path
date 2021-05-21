@@ -16,7 +16,7 @@ namespace UnitsClasses
         private new void Awake()
         {
             base.Awake();
-            timer.Interval = 500;
+            timer.Interval = 1500;
             timer.AutoReset = true;
             SetAttackFlagByTimer = (obj, args) => isAttacking = true;
             player = GameObject.FindGameObjectWithTag("Player");
@@ -26,10 +26,13 @@ namespace UnitsClasses
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject == player)
-            {
-                timer.Start();
-            }
+            if (other.gameObject != player) 
+                return;
+            
+            isAttacking = true;
+            Attack();
+            
+            timer.Start();
         }
 
         private void OnCollisionStay2D(Collision2D other)
@@ -51,11 +54,6 @@ namespace UnitsClasses
         private void Attack()
         {
             playerHealthSystem.Health -= contactAttackPower;
-        }
-
-        private void Attack(int power)
-        {
-            playerHealthSystem.Health -= power;
         }
     }
 }

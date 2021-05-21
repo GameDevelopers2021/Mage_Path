@@ -15,6 +15,7 @@ namespace UnitsClasses
             base.Awake();
             cameraForMouseDetecting = Camera.main;
             controller = new PlayerControll();
+            
             var actions = controller.Player;
             actions.MouseMoving.performed += context => RotateByMousePosition(context.ReadValue<Vector2>());
             actions.Moving.performed += context => Move(context.ReadValue<Vector2>());
