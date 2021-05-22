@@ -14,7 +14,7 @@ namespace ItemsInterfaces
             Name = name;
             Damage = damage;
             Period = period;
-            ticCount = ticCount;
+            this.ticCount = ticCount;
             Element = element;
         }
 

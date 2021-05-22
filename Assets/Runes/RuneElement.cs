@@ -19,6 +19,6 @@ namespace Runes
         }
 
         [SerializeField] private MagicElement Element;
-        [SerializeField] private IEffect SpecialEffect;
+        [SerializeField] public IEffect SpecialEffect;
     }
 }

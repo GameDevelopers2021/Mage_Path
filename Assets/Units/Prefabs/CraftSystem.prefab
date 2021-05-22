@@ -45,6 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Runes: {fileID: 608292125185484408, guid: bb749a55c77850248a1797cbaaff917e, type: 3}
   spellObject: {fileID: 0}
-  ObjectTypes: 030000000400000005000000020000000600000007000000
+  ObjectTypes: 03000000040000000500000002000000060000000700000008000000
   ElementsColor:
   - {r: 0.25650424, g: 0.027450979, b: 0.4117647, a: 1}
+  - {r: 0.9339623, g: 0.18138959, b: 0.118948035, a: 1}
+  ElementsMaterial:
+  - {fileID: 2100000, guid: 2ceaaa1bc3ebfb34b885b55f8312f35c, type: 2}
+  - {fileID: 2100000, guid: c50991aa23dd70a40bae179a672b7bc5, type: 2}

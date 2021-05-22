@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 647131353255695004}
   - component: {fileID: 3875029083653910252}
   - component: {fileID: 6632972814302897062}
+  - component: {fileID: -4221753183691730152}
   m_Layer: 0
   m_Name: Runes
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: One
   Shifts:
-  - {x: 1.1, y: 0}
+  - {x: 2, y: 0}
   Directions:
   - 0
 --- !u!114 &1442128220916764254
@@ -81,8 +82,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: TwoParallel
   Shifts:
-  - {x: 1.9696, y: 0.347}
-  - {x: 1.9696, y: -0.347}
+  - {x: 0, y: 0.5}
+  - {x: 0, y: -0.5}
   Directions:
   - 0
   - 0
@@ -141,3 +142,20 @@ MonoBehaviour:
   ParametersMulti: 
   Multi: []
   Flags: 01000000
+--- !u!114 &-4221753183691730152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608292125185484408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0484489dc0c7441a97fbbf0e8d7f0417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fire
+  Element: 1
+  period: 1.5
+  damage: 50
+  tics: 5
