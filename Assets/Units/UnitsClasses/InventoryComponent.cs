@@ -131,7 +131,7 @@ namespace Units.UnitsClasses
 
         private void Start()
         {
-            Init(new Vector2Int(2, 3));
+            Init(new Vector2Int(3, 4));
         }
     }
 }

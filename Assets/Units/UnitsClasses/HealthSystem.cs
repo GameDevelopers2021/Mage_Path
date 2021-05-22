@@ -50,7 +50,7 @@ namespace UnitsClasses
         private void UpdateUi()
         {
             if (ui != null)
-                ui.text = $"Health: {health}";
+                ui.text = $"HEALTH: {health}";
         }
 
         private void Start()
