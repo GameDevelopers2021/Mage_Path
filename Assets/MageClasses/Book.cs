@@ -12,7 +12,8 @@ namespace MageClasses
     {
         public string Name { get; }
         
-        [SerializeField] private GameObject unit; 
+        [SerializeField] public GameObject unit;
+        [SerializeField] public Transform CastTransform;
         private ISpell[] _spells;
         private int _splellInd;
         private float[] _cooldowns;
@@ -61,7 +62,7 @@ namespace MageClasses
         {
             if (_spells[_splellInd] != null && RemainingCooldownTime(_splellInd) == 0)
             {
-                var magics = _spells[_splellInd].Cast(unit.transform, unit);
+                var magics = _spells[_splellInd].Cast(CastTransform, unit);
                 if (magics != null)
                 {
                     _lastMagics = magics;
