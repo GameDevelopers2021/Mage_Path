@@ -22,7 +22,7 @@ namespace Items
 
         protected bool State;
 
-        public InventoryItem(Sprite sprite, string name = "Null")
+        public InventoryItem(Sprite sprite, string name = "Empty")
         {
             ItemSprite = sprite;
             Name = name;
