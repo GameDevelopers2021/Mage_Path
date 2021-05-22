@@ -19,7 +19,7 @@ namespace UnitsClasses
                 _actualMana = value;
                 if (ui != null)
                 {
-                    ui.text = $"Mana: {(int)_actualMana}";
+                    ui.text = $"MANA: {(int)_actualMana}";
                 }
                 if (_actualMana < 0)
                 {

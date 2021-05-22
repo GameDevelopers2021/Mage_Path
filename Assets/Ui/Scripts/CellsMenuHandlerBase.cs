@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ItemsInterfaces;
 using UnityEngine;
 
@@ -13,7 +14,14 @@ namespace Ui.Scripts
             var k = 0;
             foreach (var cell in ItemsCells)
             {
-                cell.InitWithInventoryItem(items[k]);
+                try
+                {
+                    cell.InitWithInventoryItem(items[k]);
+                }
+                catch
+                {
+                    throw new IndexOutOfRangeException("Items cells count more then inventory can keep up");
+                }
                 k++;
             }
         }
