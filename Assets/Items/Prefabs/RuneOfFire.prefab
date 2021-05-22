@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5700689405229979344}
   - component: {fileID: 1402461462129234200}
   - component: {fileID: 607823367700530046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RuneOfFire
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

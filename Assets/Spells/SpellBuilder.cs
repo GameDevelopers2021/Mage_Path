@@ -120,7 +120,7 @@ namespace SpellBuilderWithRune
             return items.Select(item => item.Identifier).ToList();
         }
 
-        private void Start()
+        private void Awake()
         {
             var copyRunes = Instantiate(Runes);
             var runes = copyRunes.GetComponents<Rune>();

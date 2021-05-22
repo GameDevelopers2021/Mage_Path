@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5221854260246904373}
   - component: {fileID: 1449491968145226237}
   - component: {fileID: 1082066943433272219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RuneOfBig
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

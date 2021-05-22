@@ -33,6 +33,8 @@ namespace MageClasses
         private void OnTriggerEnter2D(Collider2D other)
         {
             var gameObjectTag = other.gameObject.tag;
+            if (gameObjectTag == "Item")
+                return;
             if (gameObjectTag == "Immortal")
             {
                 Destroy(gameObject);
