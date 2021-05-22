@@ -102,17 +102,6 @@ namespace Units.UnitsClasses
 
         private void MovePointerToNextPosition()
         {
-            // if (pointer.y + 1 >= inventorySize.y)
-            // {
-            //     if (pointer.x + 1 >= inventorySize.x) 
-            //         return;
-            //     
-            //     pointer.y = 0;
-            //     pointer.x++;
-            //     return;
-            // }
-            //
-            // pointer.y++;
             MovePointerToFirstEmptyPosition();
         }
 

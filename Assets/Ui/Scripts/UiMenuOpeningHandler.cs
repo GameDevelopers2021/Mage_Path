@@ -11,27 +11,33 @@ namespace Ui.Scripts
         private MageAttack playerMageAttack;
         private GameObject activeMenu;
         private UiController uiController;
+        private bool isFinish;
 
         [SerializeField] private GameObject bookMenu;
         [SerializeField] private GameObject inventoryMenu;
         [SerializeField] private GameObject finishMenu;
         [SerializeField] private GameObject pauseMenu;
 
-        public GameObject BookMenu { get; set; }
-        public GameObject InventoryMenu { get; set; }
-        public GameObject FinishMenu { get; set; }
-        public GameObject PauseMenu { get; set; }
+        public GameObject BookMenu => bookMenu;
+        public GameObject InventoryMenu => inventoryMenu;
+        public GameObject FinishMenu => finishMenu;
+        public GameObject PauseMenu => pauseMenu;
 
         public void PressSignal()
         {
             Debug.Log("Pressed");
         }
 
-        private void OpenMenu(GameObject menu)
+        public void OpenMenu(GameObject menu)
         {
+            if (activeMenu == finishMenu)
+                return;
+            
             CloseActiveMenu();
-            if (menu == pauseMenu)
+
+            if (menu == pauseMenu || menu == finishMenu)
                 Time.timeScale = 0;
+            
             menu.SetActive(true);
             activeMenu = menu;
             playerMageAttack.enabled = false;
