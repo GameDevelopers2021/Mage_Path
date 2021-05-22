@@ -2,8 +2,6 @@
 {
     public enum ObjectType
     {
-        Rune,
-        RuneOfMoving,
         RuneOfMovingForward,
         RuneOfCircle,
         RuneOfOne,

@@ -37,22 +37,6 @@ namespace SpellBuilderWithRune
             }
 
             return CreateSpell(spell);
-            if (types.Contains(ObjectType.Rune) && types.Contains(ObjectType.RuneOfBigSize))
-            {
-                return new Spell(
-                    spellObject.Name,
-                    spellObject.Cast,
-                    spellObject.Effects,
-                    spellObject.cooldownInSeconds,
-                    spellObject.ManaCost,
-                    new InventoryItem(
-                        spellObject.inventoryImage,
-                        spellObject.inventoryName,
-                        ObjectType.Null));
-            }
-            
-            return new Spell("", (transform1, o) => null, new IEffect[]{}, 0.1f, 10f, 
-                new InventoryItem(null, "Crafted Spell"));
         }
         
         public ISpell CreateSpell(List<Rune> runes)
