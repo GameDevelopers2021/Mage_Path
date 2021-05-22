@@ -2472,10 +2472,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2647778161105627976, guid: cf88f0a079a3d9a499cfc9513b383cb8, type: 3}
-      propertyPath: spellObject
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3222213005635374214, guid: cf88f0a079a3d9a499cfc9513b383cb8, type: 3}
       propertyPath: m_Name
       value: CraftSystem
