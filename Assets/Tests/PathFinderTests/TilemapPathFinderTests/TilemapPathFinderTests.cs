@@ -19,9 +19,9 @@ namespace Tests.PathFinderTests
             0,
             0,
             TestName = "NoWall1")]
-        public void NoWallTest(string map, int yMin, int xMin)
+        public void NoWallTest(string map, int yCellMin, int xCellMin)
         {
-            var (tilemap, start, finish) = TestMaps.ConvertToTestSet(map, yMin, xMin);
+            var (tilemap, start, finish) = TestMaps.ConvertToTestSet(map, yCellMin, xCellMin);
             var finder = new TilemapPathFinder(tilemap, start);
             var list = finder.FindPathOnTilemap(finish);
         }
@@ -38,8 +38,16 @@ namespace Tests.PathFinderTests
         {
             var map2d = map.Split(new []{"\r\n"}, StringSplitOptions.RemoveEmptyEntries).ToArray();
             var mapLinesSize = new Vector2Int(map2d[0].Length, map2d.Length);
-            var obj = new GameObject();
-            var tilemap = obj.AddComponent<Tilemap>();
+            
+            var grid = new GameObject();
+            grid.AddComponent<Grid>();
+            grid.transform.position = new Vector3(0, 0, 0);
+            grid.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+            
+            var tilemapObject = new GameObject();
+            tilemapObject.transform.SetParent(grid.transform);
+            
+            var tilemap = tilemapObject.AddComponent<Tilemap>();
             var (start, finish) = (Vector2.zero, Vector2.zero);
 
             var yMax = yMin + mapLinesSize.y;
