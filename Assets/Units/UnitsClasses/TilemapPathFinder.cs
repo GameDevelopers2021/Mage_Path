@@ -27,7 +27,8 @@ namespace Units.UnitsClasses
                 cellsData = CalculateDataAboutCells((Vector2Int)tilemap.WorldToCell(startInWorld));
             }
         }
-
+        
+        /// <param name="tilemap">sort order - bottom left</param>
         public TilemapPathFinder(
             Tilemap tilemap, 
             Vector2 startInWorld,
