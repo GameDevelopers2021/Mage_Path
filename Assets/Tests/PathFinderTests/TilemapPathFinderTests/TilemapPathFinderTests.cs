@@ -40,6 +40,13 @@ namespace Tests.PathFinderTests
 **********", -95, -10, 8)
             },
             {
+                "NoWall4", 
+                new TestData(@"
+****
+*SF*
+****", 0, 0, 2)
+            },
+            {
                 "Wall1",
                 new TestData(@"
 **********
@@ -66,10 +73,33 @@ namespace Tests.PathFinderTests
 *.F..*
 *.*..*
 *.S..*
-******", 0, 0, 20)
+******", -10, -15, 20)
             },
             {
-                "NoPath",
+                "Wall4",
+                new TestData(@"
+***********
+*F........*
+*********.*
+*.........*
+*.*********
+*........S*
+***********", 0, 0, 29)
+            },
+            {
+                "Wall5",
+                new TestData(@"
+**********
+*......F.*
+*.********
+*..***..S*
+*.*...**.*
+*...*....*
+*........*
+**********", 0, 0, 22)
+            },
+            {
+                "NoPath1",
                 new TestData(@"
 **********
 *......F.*
@@ -78,11 +108,59 @@ namespace Tests.PathFinderTests
 *........*
 **********", 0, 0, 2)
             },
+            {
+                "NoPath2",
+                new TestData(@"
+***
+*F*
+***
+*S*
+***
+***", 0, 0, 2)
+            },
+            {
+                "PathMoreWithSearchDepthMoreThan30_1",
+                new TestData(@"
+**************
+*F...........*
+************.*
+*............*
+*.************
+*...........S*
+**************", 0, 0, 38)
+            },
+            {
+                "PathMoreWithSearchDepthMoreThan30_2",
+                new TestData(@"
+******************
+*...............F*
+*.............****
+*.************..**
+*.*..**..**..*...*
+*...*...*.S.*....*
+*.......***......*
+*...*............*
+*.......***......*
+*...*............*
+******************", 0, 0, 35)
+            },
+            {
+                "PathMoreWithSearchDepthMoreThan30_3",
+                new TestData(@"
+*****************
+*..............F*
+*.***************
+*.***************
+*.***************
+*..............S*
+*****************", 0, 0, 40)
+            },
         };
 
         [TestCase("NoWall1")]
         [TestCase("NoWall2")]
         [TestCase("NoWall3")]
+        [TestCase("NoWall4")]
         public void NoWall(string mapsDataKey)
         {
             RunTest(MapsData[mapsDataKey]);
@@ -91,12 +169,18 @@ namespace Tests.PathFinderTests
         [TestCase("Wall1")]
         [TestCase("Wall2")]
         [TestCase("Wall3")]
+        [TestCase("Wall4")]
+        [TestCase("Wall5")]
         public void Wall(string mapsDataKey)
         {
             RunTest(MapsData[mapsDataKey]);
         }
         
-        [TestCase("NoPath")]
+        [TestCase("NoPath1")]
+        [TestCase("NoPath2")]
+        [TestCase("PathMoreWithSearchDepthMoreThan30_1")]
+        [TestCase("PathMoreWithSearchDepthMoreThan30_2")]
+        [TestCase("PathMoreWithSearchDepthMoreThan30_3")]
         public void NoPath(string mapsDataKey)
         {
             var hasException = false;
@@ -112,7 +196,7 @@ namespace Tests.PathFinderTests
             
             Assert.True(hasException);
         }
-        
+
         private void RunTest(TestData data)
         {
             var (tilemap, startCell, finishCell) = TestParser.ConvertToTestSet(data.Map, data.CellMinY, data.CellMinX);
