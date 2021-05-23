@@ -77,7 +77,7 @@ namespace Units.UnitsClasses
 
         private Dictionary<Vector2Int, CellInfo> CalculateDataAboutCells(Vector2Int start)
         {
-            used = new HashSet<Vector2Int>();
+            used = new HashSet<Vector2Int> {start};
             var queue = new Queue<Vector2Int>();
             var newQueue = new Queue<Vector2Int>();
             var result = new Dictionary<Vector2Int, CellInfo>();
