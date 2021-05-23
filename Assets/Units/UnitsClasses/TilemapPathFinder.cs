@@ -15,6 +15,8 @@ namespace Units.UnitsClasses
         private BoundsInt bounds;
         private Dictionary<Vector2Int, CellInfo> cellsData;
         private Vector2 startInWorld;
+        private HashSet<Vector2Int> used;
+        private int maxDepth = 30;
 
         public Vector2 StartInWorld 
         { 
@@ -75,40 +77,35 @@ namespace Units.UnitsClasses
 
         private Dictionary<Vector2Int, CellInfo> CalculateDataAboutCells(Vector2Int start)
         {
-            var used = new HashSet<Vector2Int>();
+            used = new HashSet<Vector2Int>();
             var queue = new Queue<Vector2Int>();
+            var newQueue = new Queue<Vector2Int>();
             var result = new Dictionary<Vector2Int, CellInfo>();
 
             queue.Enqueue(start);
             result[start] = new CellInfo(start, 0);
-            while (queue.Count != 0)
+            var depth = 0;
+            while (queue.Count != 0 && depth <= maxDepth)
             {
-                var cell = queue.Dequeue();
-                var cellInfo = result[cell];
-                foreach (var offset in offsets)
+                newQueue = new Queue<Vector2Int>();
+                while (queue.Count != 0)
                 {
-                    var adjacentCell = cell + offset;
-                    if (!IsReachableCell(adjacentCell))
-                        continue;
-                    if (!result.TryGetValue(adjacentCell, out var adjacentCellInfo))
+                    var cell = queue.Dequeue();
+                    var cellInfo = result[cell];
+                    foreach (var offset in offsets)
                     {
+                        var adjacentCell = cell + offset;
+                        if (!IsReachableCell(adjacentCell) || used.Contains(adjacentCell))
+                            continue;
                         result[adjacentCell] = new CellInfo(cell, cellInfo.Distance + 1);
+                        
+                        newQueue.Enqueue(adjacentCell);
+                        used.Add(adjacentCell);
                     }
-                    else
-                    {
-                        var potentialMinDistance = cellInfo.Distance + 1;
-                        if (adjacentCellInfo.Distance > potentialMinDistance)
-                        {
-                            adjacentCellInfo.Distance = potentialMinDistance;
-                            adjacentCellInfo.PreviousCellPosition = cell;
-                        }
-                    }
-
-                    if (used.Contains(adjacentCell))
-                        continue;
-                    queue.Enqueue(adjacentCell);
-                    used.Add(adjacentCell);
                 }
+
+                depth++;
+                queue = newQueue;
             }
 
             return result;

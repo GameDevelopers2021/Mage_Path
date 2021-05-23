@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5178884812959654399}
   - component: {fileID: 1996635909605533239}
   - component: {fileID: 48588118798382161}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RuneOfMoving
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

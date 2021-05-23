@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5354716319036705787}
   - component: {fileID: 1595865900120542259}
   - component: {fileID: 953708627968106069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RuneOfCircle
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

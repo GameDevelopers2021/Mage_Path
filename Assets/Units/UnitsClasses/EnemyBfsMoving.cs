@@ -53,6 +53,7 @@ namespace Units.UnitsClasses
             catch (ArgumentException)
             {
                 Rigidbody.velocity = Vector2.zero;
+                return;
             }
             MoveToPoint(nextPosition);
         }

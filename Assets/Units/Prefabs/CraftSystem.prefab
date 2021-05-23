@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2647778161105627976}
   m_Layer: 0
   m_Name: CraftSystem
-  m_TagString: Untagged
+  m_TagString: CraftSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
