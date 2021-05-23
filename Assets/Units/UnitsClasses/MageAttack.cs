@@ -6,6 +6,7 @@ using Items;
 using ItemsInterfaces;
 using MageClasses;
 using SpellBuilderWithRune;
+using Ui.Scripts;
 using UnityEngine;
 
 namespace UnitsClasses
@@ -25,6 +26,8 @@ namespace UnitsClasses
                     new InventoryItem(null, "", ObjectType.RuneOfCircle), 
                     new InventoryItem(null, "", ObjectType.RuneOfMovingForward)
                 }), 0);
+            var menu = GameObject.FindWithTag("BookMenuCanvas").GetComponentInChildren<BookMenuHandler>();
+            menu.UpdateCells();
         }
 
         private new void Awake()

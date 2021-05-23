@@ -16,6 +16,7 @@ TagManager:
   - CraftButton
   - CraftSystem
   - Item
+  - BookMenuCanvas
   layers:
   - Default
   - TransparentFX

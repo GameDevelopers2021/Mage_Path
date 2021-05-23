@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2615079429146711636}
   m_Layer: 5
   m_Name: BookMenuCanvas
-  m_TagString: Untagged
+  m_TagString: BookMenuCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -252.8, y: -118}
+  m_AnchoredPosition: {x: -252.80005, y: -118}
   m_SizeDelta: {x: 686.6, y: 275.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2615079430250500179
