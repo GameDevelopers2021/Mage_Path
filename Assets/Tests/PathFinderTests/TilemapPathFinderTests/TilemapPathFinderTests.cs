@@ -23,6 +23,7 @@ namespace Tests.PathFinderTests
         {
             var (tilemap, start, finish) = TestMaps.ConvertToTestSet(map, yMin, xMin);
             var finder = new TilemapPathFinder(tilemap, start);
+            var list = finder.FindPathOnTilemap(finish);
         }
     }
 
@@ -37,18 +38,18 @@ namespace Tests.PathFinderTests
         {
             var map2d = map.Split(new []{"\r\n"}, StringSplitOptions.RemoveEmptyEntries).ToArray();
             var mapLinesSize = new Vector2Int(map2d[0].Length, map2d.Length);
-            var tilemap = new Tilemap();
+            var obj = new GameObject();
+            var tilemap = obj.AddComponent<Tilemap>();
             var (start, finish) = (Vector2.zero, Vector2.zero);
 
-            var yMax = yMin + mapLinesSize.x;
-            var xMax = xMin + mapLinesSize.y;
-            //tilemap = new Vector3Int(mapLinesSize.x, mapLinesSize.y, 0);
+            var yMax = yMin + mapLinesSize.y;
+            var xMax = xMin + mapLinesSize.x;
 
             for (var i = yMin; i < yMax; i++)
             for (var j = xMin; j < xMax; j++)
             {
                 var position = new Vector3Int(j, i, 0);
-                var tileChar = map2d[j - xMin][i - yMin];
+                var tileChar = map2d[i - yMin][j - xMin];
                 var tile = (TileBase) null;
 
                 if (tileChar == '*')
