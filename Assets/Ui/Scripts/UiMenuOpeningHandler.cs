@@ -43,7 +43,7 @@ namespace Ui.Scripts
             playerMageAttack.enabled = false;
         }
     
-        private void CloseActiveMenu()
+        public void CloseActiveMenu()
         {
             Time.timeScale = 1;
             if (activeMenu == null)

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/History.unity
     guid: 53856e443f04ab84ea2902e52aa9dbc6
   - enabled: 1
+    path: Assets/Scenes/LearningLevel.unity
+    guid: ba2fefeca4887d7438714876cbc25ede
+  - enabled: 1
     path: Assets/Scenes/LevelBig.unity
     guid: 064ce9dd4d4537d4bb91f5151a231a16
   - enabled: 1
