@@ -143,18 +143,7 @@
                 {
                     "name": "",
                     "id": "df40fc6b-e57c-4e0f-a6cc-15a01bf38402",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Open",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "42bc62a8-3375-49a7-a789-8da754e6880f",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

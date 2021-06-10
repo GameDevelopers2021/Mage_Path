@@ -89,7 +89,7 @@ namespace Ui.Scripts
             uiController = new UiController();
             uiController.Menu.Open.performed += context =>
             {
-                if (!TryOpenDoublePress(inventoryMenu, Keyboard.current.iKey))
+                if (!TryOpenDoublePress(inventoryMenu, Keyboard.current.tabKey))
                 {
                     TryOpenDoublePress(pauseMenu, Keyboard.current.escapeKey);
                 }
