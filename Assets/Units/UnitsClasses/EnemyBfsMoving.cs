@@ -7,8 +7,6 @@ namespace Units.UnitsClasses
     public class EnemyBfsMoving : UnitMoving
     {
         [SerializeField] private PathFindingSystem pathFindingSystem;
-        private Vector2 nextPosition;
-        private Vector2 requiredVelocity = Vector2.positiveInfinity;
 
         private new void FixedUpdate()
         {
@@ -37,32 +35,15 @@ namespace Units.UnitsClasses
 
         private void Move()
         {
-            if (requiredVelocity != Vector2.positiveInfinity 
-                && !(Rigidbody.velocity.magnitude < 1e-2))
-            {
-                if (!(((Vector2)transform.position - nextPosition).magnitude < 0.1))
-                {
-                    return;
-                }
-            }
-            
             try
             {
-                nextPosition = pathFindingSystem.GetNextPosition(transform.position);
+                var position = transform.position;
+                Move(pathFindingSystem.GetNextPosition(position) - (Vector2) position);
             }
             catch (ArgumentException)
             {
                 Rigidbody.velocity = Vector2.zero;
-                return;
             }
-            MoveToPoint(nextPosition);
-        }
-
-        private void MoveToPoint(Vector2 point)
-        {
-            var directionToPoint = point - (Vector2) transform.position;
-            Move(directionToPoint);
-            requiredVelocity = directionToPoint.normalized * Speed;
         }
     }
 }

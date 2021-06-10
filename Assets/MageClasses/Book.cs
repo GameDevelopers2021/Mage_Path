@@ -84,7 +84,6 @@ namespace MageClasses
                 _lastUseSpells[spellIndex] = -spell.Cooldown;
                 return true;
             //}
-            return false;
         }
 
         public void SwapSpells(int spellA, int spellB)
