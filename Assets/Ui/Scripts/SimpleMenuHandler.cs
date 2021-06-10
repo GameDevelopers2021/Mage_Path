@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,7 +31,6 @@ namespace Ui.Scripts
 
         public void ExitGame()
         {
-            //EditorApplication.isPlaying = false;
             Application.Quit();
         }
     }
