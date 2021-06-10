@@ -161,6 +161,7 @@ MonoBehaviour:
   ui: {fileID: 0}
   gameOverSceneName: Scenes/ExitMenu
   itemOnDeath: {fileID: 0}
+  Hit: {fileID: 4943793018499756059}
 --- !u!114 &635887893822222665
 MonoBehaviour:
   m_ObjectHideFlags: 0

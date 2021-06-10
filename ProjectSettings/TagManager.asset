@@ -17,6 +17,7 @@ TagManager:
   - CraftSystem
   - Item
   - BookMenuCanvas
+  - HitAudio
   layers:
   - Default
   - TransparentFX

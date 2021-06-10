@@ -13,7 +13,7 @@ namespace UnitsClasses
         [SerializeField] private string gameOverSceneName;
         [SerializeField] private GameObject itemOnDeath;
         private ColorMarkerComponent marker;
-        private AudioSource Hit;
+        [SerializeField] private AudioSource Hit;
 
         public int Health
         {
@@ -60,7 +60,7 @@ namespace UnitsClasses
         private void Start()
         {
             marker = GetComponent<ColorMarkerComponent>();
-            Hit = gameObject.GetComponentInChildren<AudioSource>();
+            //Hit = gameObject.GetComponentInChildren<AudioSource>();
             UpdateUi();
         }
     }
